@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel=stylesheet href="css/list.css">
+</head>
+<body>
+<header>
+    <b>后台管理系统</b>
+    <div class="user-msg">
+        <span id="user-type"></span>
+        <img src="image/u10.png">
+        <span id="user-name">未登录</span>
+        <button type=button id="loginout">退出</button>
+    </div>
+</header>
+<main>
+<ul class="nav-left">
+    <li><a href="list.html">学员列表</a></li>
+    <li><a href=add.html>新增学员</a></li>
+    <li>个人信息</li>
+</ul>
+<div class="users">
+<p>列表管理</p>
+    <div class="filter">
+    <label for=type>类　型</label>
+    <select id="type">
+        <option value=0>全部</option>
+        <option value=1>CSS</option>
+        <option value=2>JS</option>
+        <option value=3>JAVA</option>
+        <option value=4>运维</option>
+        <option value=5>DBA</option>
+        <option value=6>产品</option>
+        <option value=7>IOS</option>
+        <option value=8>Android</option>
+        </select>
+
+    <label for=talent>资　质</label>
+    <select id="talent">
+        <option value=0>全部</option>
+        <option value=1>学霸</option>
+        <option value=2>学渣</option>
+        </select>
+    <label for=level>修行等级</label>
+    <select id="level">
+        <option value=0>全部</option>
+        <option value=1>0基础</option>
+        <option value=2>3个月内</option>
+        <option value=3>6个月内</option>
+        <option value=4>1年内</option>
+        <option value=5>3年内</option>
+        <option value=6>3年以上</option>
+    </select>
+        <button type=button id="search">搜索</button>
+    </div>
+    <div class="user-list">
+        <p>内容列表</p>
+    <button class="add">新增</button>
+        <dl>
+            <dt>id</dt>
+            <dt>姓名</dt>
+            <dt>类型</dt>
+            <dt>报名时间</dt>
+            <dt>操作</dt>
+        </dl>
+    </div>
+    <div class="page">
+<button class="pre" disabled><</button>
+    <p class="page-bar">第<span>1</span>页</p>
+<button class="next">></button>
+    </div>
+</div>
+</main>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/list.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

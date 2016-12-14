@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>新增修改</title>
+    <link rel=stylesheet href="css/list.css">
+    <link rel=stylesheet href="css/user.css">
+</head>
+<body>
+<header>
+    <b>后台管理系统</b>
+    <div class="user-msg">
+        <span id="user-type"></span>
+        <img src="image/u10.png">
+        <span id="user-name">未登录</span>
+        <button type=button id="loginout">退出</button>
+    </div>
+</header>
+<main>
+<ul class="nav-left">
+    <li><a href="list.html">学员列表</a></li>
+   <li> <a href="add.html">新增学员</a></li>
+    <li>个人信息</li>
+</ul>
+<div class="users">
+    <p>新增页面</p>
+    <div class="wrap">
+        <form target="_blank">
+            <div class="column-1">
+                <label for="name">姓名：</label>
+                <input type="text" id="name" name="name" placeholder="请输入2-5位中文" maxlength="5" class="att-text">
+            </div>
+            <div class="column-2">
+                <label for="qq">QQ：</label>
+                <input type="text" id="qq" name="qq" placeholder="请输入6-15位数字"   maxlength="15" class="att-text">
+            </div>
+            <div class="column-3">
+                <span>修真类型：</span>
+                <div class="select">
+                    <input type="radio" name="type" id="type1" value="1"><label for="type1">CSS</label>
+                    <input type="radio" name="type" id="type2" value="2"><label for="type2">JS</label>
+                    <input type="radio" name="type" id="type3" value="3"><label for="type3">JAVA</label>
+                    <input type="radio" name="type" id="type4" value="4"><label for="type4">运维</label>
+                    <input type="radio" name="type" id="type5" value="5"><label for="type5">DBA</label>
+                    <input type="radio" name="type" id="type6" value="6"><label for="type6">产品</label>
+                    <input type="radio" name="type" id="type7" value="7"><label for="type7">IOS</label>
+                    <input type="radio" name="type" id="type8" value="8"><label for="type8">ANDROID</label>
+                </div>
+            </div>
+            <div class="column-4">
+                <label for="school">毕业院校：</label>
+                <input type="text" id="school" name="school">
+            </div>
+            <div class="column-5"><span>资质：</span>
+                <div class="select">
+                    <input type="radio" id="talent1" name="talent" value="1"><label for="talent1">学霸</label>
+                    <input type="radio" id="talent2" name="talent" value="2"><label for="talent2">学渣</label>
+                </div>
+            </div>
+            <div class="column-6">
+                <span>修行等级：</span>
+                <div class="select">
+                    <input type="radio" id="level1" name="level" value="1"><label for="level1">0基础</label>
+                    <input type="radio" id="level2" name="level" value="2"><label for="level2">修行3个月以内</label>
+                    <input type="radio" id="level3" name="level" value="3"><label for="level3">修行6个月以内</label>
+                    <input type="radio" id="level4" name="level" value="4"><label for="level4">修行1年以内</label>
+                    <input type="radio" id="level5" name="level" value="5"><label for="level5">修行3年以内</label>
+                    <input type="radio" id="level6" name="level" value="6"><label for="level6">修行3年以上</label>
+                </div>
+            </div>
+            <div class="column-7">
+                <span>预计入学时间：</span>
+                <input type="text" class="sang_Calender" id="joinTime" name="joinTime">
+                <label for="joinTime"></label>
+            </div>
+            <div class="column-8" style="line-height: 16px">
+                修行立愿：
+                <div style="width: 820px;float: right">
+                    <script id="editor" ></script>
+                </div>
+            </div>
+            <div class="btn">
+                <button type="button" id="submit" disabled>确认</button>
+                <button type="reset" class="back">取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+</main>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="UEditor/ueditor.config.js"></script>
+<script src="UEditor/ueditor.all.js"></script>
+<script src="time/datetime.js"></script>
+<script src="js/add.js"></script>
+</body>
+</html>

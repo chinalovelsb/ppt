@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel=stylesheet href="css/list.css">
+    <link rel=stylesheet href="css/user.css">
+</head>
+<body>
+<header>
+    <b>后台管理系统</b>
+    <div class="user-msg">
+        <span id="user-type"></span>
+        <img src="image/u10.png">
+        <span id="user-name">未登录</span>
+        <button type=button id="loginout">退出</button>
+    </div>
+</header>
+<ul class="nav-left">
+    <li><a href="list.html">学员列表</a></li>
+    <li><a href=add.html>新增学员</a></li>
+    <li>个人信息</li>
+</ul>
+<main>
+    <p>个人信息</p>
+    <div class="wrap">
+        <form target="_blank">
+            <div class="column-1">
+                <label for="name" style="font-size:14px">登录名：</label>
+                <input type="text" id="name" name="name" placeholder="请输入2-5位中文" maxlength="5" class="att-text">
+            </div>
+            <div class="column-2">
+                <label for="qq" style="font-size:14px">密码：</label>
+                <input type="text" id="qq" name="qq" placeholder="请输入6-15位数字"   maxlength="15" class="att-text">
+            </div>
+<input type=file>
+            <img src="../../fakepath/203124358957124457.jpg">
+            <div class="btn">
+                <button type="button" id="submit" disabled>确认</button>
+                <button type="reset" class="back">取消</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="page">
+        <button class="pre" disabled><</button>
+        <p class="page-bar">第<span>1</span>页</p>
+        <button class="next">></button>
+    </div>
+</main>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/list.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
