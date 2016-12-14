@@ -3,7 +3,7 @@
  */
 var loginApp = angular.module("loginApp", []);
 loginApp.controller("loginCtl", function ($scope, $http) {
-    $scope.tesT = function () {
+    $scope.login = function () {
         $http({
             url: "/jns/a/login",
             method: "post",
