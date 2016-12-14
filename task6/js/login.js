@@ -4,8 +4,6 @@
 var loginApp = angular.module("loginApp", []);
 loginApp.controller("loginCtl", function ($scope, $http) {
     $scope.tesT = function () {
-        console.log(typeof ($scope.mobile));
-        console.log(typeof ($scope.pwd));
         $http({
             url: "/jns/a/login",
             method: "post",
@@ -15,7 +13,12 @@ loginApp.controller("loginCtl", function ($scope, $http) {
             .success(function (response) {
                 if (response.message === "success") {
                     location.href = "list.html"
+                }else {
+                    $scope.msg=response.message
                 }
+            })
+            .error(function (response) {
+                    alert(response.message)
             })
     }
 });
