@@ -32,7 +32,14 @@ button{width:100px;height:35px;border:1px solid #ccc;background-color: #f2f2f2;
   -webkit-border-radius:5px;margin-left:100px;
   -moz-border-radius:5px;
   border-radius:5px;}}
-.user-list{min-width:   970px;width:90%;height:510px;margin:0 auto;overflow: auto;p{display:inline-block;background-color: #fff;border:none;}
+.user-list{min-width:   970px;
+  .detail{height:408px;overflow: auto;width:100%;
+  dl{width:20%;
+    margin-top: 0;
+    border-top: none;float:left}dd{width:100%}}
+  ul{list-style:none;width:20%;float: left;
+  li{height:50px;line-height:50px;text-align: center;border-bottom:1px solid #ccc}}
+  width:90%;height:510px;margin:0 auto;overflow: hidden;p{display:inline-block;background-color: #fff;border:none;}
   border:1px solid #000;
   .add{width:100px;height:35px;border:1px solid #ccc;background-color: #f2f2f2;margin:5px 10px;
   -webkit-border-radius:5px;margin-left:100px;

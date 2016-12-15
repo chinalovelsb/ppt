@@ -59,17 +59,16 @@ header .user-msg {
   background-color: #f2f2f2;
   text-align: center;
 }
-main{position:relative}
-.users {
+main {
   position: absolute;
   right: 20px;
-  top: 15px;
+  top: 85px;
   left: 230px;
   height: 720px;
   border: 1px solid #ccc;
   min-width: 1020px;
 }
-.users p {
+main p {
   background-color: #f2f2f2;
   height: 40px;
   line-height: 40px;
@@ -102,8 +101,33 @@ select {
   width: 90%;
   height: 510px;
   margin: 0 auto;
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid #000;
+}
+.user-list .detail {
+  height: 408px;
+  overflow: auto;
+  width: 100%;
+}
+.user-list .detail dl {
+  width: 20%;
+  margin-top: 0;
+  border-top: none;
+  float: left;
+}
+.user-list .detail dd {
+  width: 100%;
+}
+.user-list ul {
+  list-style: none;
+  width: 20%;
+  float: left;
+}
+.user-list ul li {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
 }
 .user-list p {
   display: inline-block;
