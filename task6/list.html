@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=divice-width,initial-scale=1">
     <title>后 台</title>
     <link rel=stylesheet href="css/list.css">
 </head>
@@ -28,8 +29,7 @@
             <label for="type">类　型</label>
             <select id="type" data-ng-model="selectType" data-ng-options="x.value as x.name for x in type"></select>
             <label for="talent">资　质</label>
-            <select id="talent" data-ng-model="selectTalent"
-                    data-ng-options="x.value as x.name for x in talent"></select>
+            <select id="talent" data-ng-model="selectTalent" data-ng-options="x.value as x.name for x in talent"></select>
             <label for="level">修行等级</label>
             <select id="level" data-ng-model="selectLevel" data-ng-options="x.value as x.name for x in level"></select>
             <button type=button id="search" data-ng-click="search()">搜索</button>

@@ -68,9 +68,15 @@ routerApp.controller("listCtl", function ($scope, $http, $location) {
                     return time;
                 };
                 $scope.searchData = $location.search();
-                $scope.selectType = $scope.type[$scope.searchData.type].value;
-                $scope.selectTalent = $scope.talent[$scope.searchData.talent].value;
-                $scope.selectLevel = $scope.level[$scope.searchData.level].value;
+               if (!isNaN($scope.searchData.type)){
+                   $scope.selectType = $scope.type[$scope.searchData.type].value;
+               } ;
+               if(!isNaN($scope.searchData.talent)) {
+                    $scope.selectTalent = $scope.talent[$scope.searchData.talent].value;
+                };
+              if (!isNaN($scope.searchData.level)) {
+                        $scope.selectLevel = $scope.level[$scope.searchData.level].value;
+                    }
             }
         });
     $scope.search = function () {
