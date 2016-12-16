@@ -22,46 +22,47 @@
 </ul>
 <main data-ng-app="routerApp" data-ng-controller="listCtl">
     <!--<span data-ui-view></span>-->
-<div class="users">
-<p>列表管理</p>
-    <div class="filter">
-    <label for="type">类　型</label>
-    <select id="type" data-ng-model="selectType" data-ng-options="x.value as x.name for x in type"></select>
-    <label for="talent">资　质</label>
-    <select id="talent" data-ng-model="selectTalent" data-ng-options="x.value as x.name for x in talent"></select>
-    <label for="level">修行等级</label>
-    <select id="level" data-ng-model="selectLevel" data-ng-options="x.value as x.name for x in level"></select>
-    <button type=button id="search" data-ng-click()>搜索</button>
-    </div>
-    <div class="user-list">
-        <p>内容列表</p>
-    <button class="add">新增</button>
-        <dl>
-            <dt>id</dt>
-            <dt>姓名</dt>
-            <dt>类型</dt>
-            <dt>报名时间</dt>
-            <dt>操作</dt>
-        </dl>
-        <div class="detail">
-            <ul data-ng-repeat="user in userList">
-                <li data-ng-bind="user.id"></li>
-                <li data-ng-bind="user.name"></li>
-                <li data-ng-bind="localeData.type[user.type-1]"></li>
-                <li data-ng-bind="time(user.joinTime)"></li>
-
-                        <li><button type="button" class="edit">编辑</button>
-                            <button type="button" class="del">删除</button></li>
-
-            </ul>
+    <div class="users">
+        <p>列表管理</p>
+        <div class="filter">
+            <label for="type">类　型</label>
+            <select id="type" data-ng-model="selectType" data-ng-options="x.value as x.name for x in type"></select>
+            <label for="talent">资　质</label>
+            <select id="talent" data-ng-model="selectTalent"
+                    data-ng-options="x.value as x.name for x in talent"></select>
+            <label for="level">修行等级</label>
+            <select id="level" data-ng-model="selectLevel" data-ng-options="x.value as x.name for x in level"></select>
+            <button type=button id="search" data-ng-click="search()">搜索</button>
+        </div>
+        <div class="user-list">
+            <p>内容列表</p>
+            <button class="add">新增</button>
+            <dl>
+                <dt>id</dt>
+                <dt>姓名</dt>
+                <dt>类型</dt>
+                <dt>报名时间</dt>
+                <dt>操作</dt>
+            </dl>
+            <div class="detail">
+                <ul data-ng-repeat="user in userList|filter:searchData">
+                    <li data-ng-bind="user.id "></li>
+                    <li data-ng-bind="user.name"></li>
+                    <li data-ng-bind="localeData.type[user.type-1]"></li>
+                    <li data-ng-bind="time(user.joinTime)"></li>
+                    <li>
+                        <button type="button" class="edit">编辑</button>
+                        <button type="button" class="del">删除</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page">
+            <button class="pre" disabled><</button>
+            <p class="page-bar">第<span>1</span>页</p>
+            <button class="next">></button>
         </div>
     </div>
-    <div class="page">
-<button class="pre" disabled><</button>
-    <p class="page-bar">第<span>1</span>页</p>
-<button class="next">></button>
-    </div>
-</div>
 </main>
 <script src="http://cdn.bootcss.com/angular.js/1.3.18/angular.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
