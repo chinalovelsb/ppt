@@ -13,18 +13,18 @@
     </style>
 </head>
 <body >
-<form class="login-box" autocomplete=off ng-app="routerApp" ng-controller="loginCtl">
+<form class="login-box" autocomplete=off data-ng-app="routerApp" data-ng-controller="loginCtl">
     <p>后台登录</p>
     <div class="user">
         <span></span>
-        <input type="text" id="user" placeholder="用户名" ng-model="mobile">
+        <input type="text" id="user" placeholder="用户名" data-ng-model="mobile">
     </div>
     <div class="pwd">
         <span></span>
-        <input type="password" id="pwd" placeholder="密码" ng-model="pwd">
+        <input type="password" id="pwd" data-placeholder="密码" data-ng-model="pwd">
     </div>
-    <p class="msg" ng-bind="msg"></p>
-    <button class="btn" type="button" ng-click="login()">登录</button>
+    <p class="msg" data-ng-bind="msg"></p>
+    <button class="btn" type="button" data-ng-click="login()">登录</button>
 </form>
 <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/angular.js/1.3.4/angular.js"></script>

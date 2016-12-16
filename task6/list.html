@@ -25,36 +25,13 @@
 <div class="users">
 <p>列表管理</p>
     <div class="filter">
-    <label for=type>类　型</label>
-    <select id="type">
-        <option value=0>全部</option>
-        <option value=1>CSS</option>
-        <option value=2>JS</option>
-        <option value=3>JAVA</option>
-        <option value=4>运维</option>
-        <option value=5>DBA</option>
-        <option value=6>产品</option>
-        <option value=7>IOS</option>
-        <option value=8>Android</option>
-        </select>
-
-    <label for=talent>资　质</label>
-    <select id="talent">
-        <option value=0>全部</option>
-        <option value=1>学霸</option>
-        <option value=2>学渣</option>
-        </select>
-    <label for=level>修行等级</label>
-    <select id="level">
-        <option value=0>全部</option>
-        <option value=1>0基础</option>
-        <option value=2>3个月内</option>
-        <option value=3>6个月内</option>
-        <option value=4>1年内</option>
-        <option value=5>3年内</option>
-        <option value=6>3年以上</option>
-    </select>
-        <button type=button id="search">搜索</button>
+    <label for="type">类　型</label>
+    <select id="type" data-ng-model="selectType" data-ng-options="x.value as x.name for x in type"></select>
+    <label for="talent">资　质</label>
+    <select id="talent" data-ng-model="selectTalent" data-ng-options="x.value as x.name for x in talent"></select>
+    <label for="level">修行等级</label>
+    <select id="level" data-ng-model="selectLevel" data-ng-options="x.value as x.name for x in level"></select>
+    <button type=button id="search" data-ng-click()>搜索</button>
     </div>
     <div class="user-list">
         <p>内容列表</p>
@@ -67,24 +44,16 @@
             <dt>操作</dt>
         </dl>
         <div class="detail">
-            <ul>
-                <li data-ng-repeat="user in userList" data-ng-bind="user.id"></li>
+            <ul data-ng-repeat="user in userList">
+                <li data-ng-bind="user.id"></li>
+                <li data-ng-bind="user.name"></li>
+                <li data-ng-bind="localeData.type[user.type-1]"></li>
+                <li data-ng-bind="time(user.joinTime)"></li>
+
+                        <li><button type="button" class="edit">编辑</button>
+                            <button type="button" class="del">删除</button></li>
+
             </ul>
-            <ul>
-                <li data-ng-repeat="user in userList" data-ng-bind="user.name"></li>
-            </ul>
-            <ul>
-                <li data-ng-repeat="user in userList" data-ng-bind="type[user.type-1]"></li>
-            </ul>
-            <ul>
-                <li data-ng-repeat="user in userList" data-ng-bind="time(user.joinTime)"></li>
-            </ul>
-            <dl >
-                <dd data-ng-repeat="user in userList">
-                    <button type="button" class="edit">编辑</button>
-                    <button type="button" class="del">删除</button>
-                </dd>
-            </dl>
         </div>
     </div>
     <div class="page">
