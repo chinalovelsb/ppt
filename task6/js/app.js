@@ -16,7 +16,7 @@ routerApp.config(function($stateProvider,$urlRouterProvider){
         .state('edit',{
             url:"/edit",
             templateUrl:"add.html"
-        })
+        });
 
       /*.state('list.new',{
             url:'/cild',
@@ -24,7 +24,7 @@ routerApp.config(function($stateProvider,$urlRouterProvider){
             }
 
         )*/
-})
+});
 
 routerApp.controller("loginCtl", function ($scope, $http) {
     $scope.login = function () {
@@ -46,21 +46,47 @@ routerApp.controller("loginCtl", function ($scope, $http) {
             })
     }
 });
+/*routerApp.service("request",function ($http,port,requestType,requestData) {
+    this.testF =function () {
+        $http({
+            url:"/test/"+port,
+            method:requestType,
+            data:requestData}
+        )
+    }
+
+
+});*/
 routerApp.controller("listCtl", function ($scope,$http) {
-    $scope.type = ["CSS", "JS", "JAVA", "运维", "DBA", "产品", "IOS", "ANDROID"];
-    $scope.talent = ["学渣", "学霸"];
-    $scope.level = ["0基础", "修行3个月以内", "修行6个月以内", "修行1年以内", "修行3年以内", "修行3年以上"];
-$http.get("/test/students")
+
+   $scope.localeData={
+       "type":["CSS", "JS", "JAVA", "运维", "DBA", "产品", "IOS", "ANDROID"],
+        "talent":["学渣", "学霸"],
+        "level": ["0基础", "修行3个月以内", "修行6个月以内", "修行1年以内", "修行3年以内", "修行3年以上"]
+   }
+
+
+
+    $scope.talent = [{name:"全部",value:0},{name:"学渣",value:1}, {name:"学霸",value:2}];
+    $scope.level = [{name:"全部",value:0},{name:"0基础",value:1},{ name:"修行3个月以内",value:2},
+        { name:"修行6个月以内",value:3},{name:"修行1年以内",value:4},{name:"修行3年以内",value:5},{
+        name:"修行3年以上",value:6}];
+    $scope.type = [{name:"全部",value:0},{name:"CSS",value:1},{name:"JS",value:2},{name:"JAVA",value:3},{name:"运维",value:4},
+        {name:"DBA",value:5},{name:"产品",value:6},{name:"IOS",value:7},{name:"ANDROID",value:8}];
+    $scope.selectType = $scope.type[0].value;
+    $scope.selectLevel = $scope.level[0].value;
+    $scope.selectTalent = $scope.talent[0].value;
+/*    request($http,students,get)*/
+    $http.get("/test/students")
     .success(function(response){
         if(response.message==="查询成功"){
-            $scope.userList = response.data
+            $scope.userList = response.data;
             $scope.time = function(joinTime){
-                var time=new Date(joinTime).toLocaleString().replace(/\//g,"-");
-                return  time
+                 time=new Date(joinTime).toLocaleString().replace(/\//g,"-");
+                return  time;
             }
-
         }
 
 
 })
-})
+});
