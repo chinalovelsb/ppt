@@ -63,7 +63,7 @@ routerApp.controller("listCtl", function ($scope, $http, $location, $rootScope, 
         time = new Date(joinTime).toLocaleString().replace(/\//g, "-");
         return time;
     };
-    ($scope.request = function (check) {
+    ($scope.request = function () {
         $http.get("/student-ajax/students")
             .success(function (response) {
                 if (response.message === "查询成功") {
@@ -76,7 +76,7 @@ routerApp.controller("listCtl", function ($scope, $http, $location, $rootScope, 
                     if ($scope.page < "2") {
                         $scope.preState = true
                     }
-                    for (var x in $location.search()) {
+                    for (var x in $location.search()) {//根据url条件过滤数据
                         $scope.userList = $filter('searched')($scope.userList);
                         continue
                     }
@@ -115,7 +115,7 @@ routerApp.controller("listCtl", function ($scope, $http, $location, $rootScope, 
         } else {
             $scope.nextState = false
         }
-    }
+    };
     /****************翻页**********/
     $scope.nextPage = function () {
         $scope.page++;
@@ -146,14 +146,15 @@ routerApp.filter("searched", function ($location) {
     return function (data) {
         var userData = [];
         var oBject = $location.search();
-        console.log($location.search())
         for (var i = 0; i < data.length; i++) {
             var y = 0, x = 0,z = 0;
             for (var property in oBject) {//遍历属性
                 z++;
-                if (oBject[property] == data[i][property]) {//过滤搜索函数的值类型为numbe
-                    x++                                     //刷新通过url取的值为string 全等将不能通过
+                if (oBject[property] === data[i][property]) {//过滤搜索函数的值类型为numbe
+                    x++;                                     //刷新通过url取的值为string 全等将不能通过
                 }
+               /* console.log(typeof oBject[property])
+                console.log(typeof data[i][property])*/
                 y++}
             if (x === y) {//每当url中属性与对象配对成功一次X+1；y为url所包含的属性数量
                 userData.push(data[i]);
