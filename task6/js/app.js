@@ -63,70 +63,49 @@ routerApp.controller("listCtl", function ($scope, $http, $location, $rootScope, 
         time = new Date(joinTime).toLocaleString().replace(/\//g, "-");
         return time;
     };
-    /*    request($http,students,get)*/
-    $scope.test = function () {
-        var i = 0;
-        for (var x in $location.search()) {
-            i++
-        }
-        if (i) {
-            $scope.request(1)
-
-        } else {
-            $scope.request(0)
-        }
-    }
-
-    $scope.request = function (check) {
+    ($scope.request = function (check) {
         $http.get("/student-ajax/students")
             .success(function (response) {
                 if (response.message === "查询成功") {
                     $scope.userList = response.data;
                     if (!!$location.hash()) {   /*读取哈希值，若存在则保持页面*/
                         $scope.page = $location.hash();
-                    } else {
+                    } else {                    /*否则返回第一页*/
                         $scope.page = 1
                     }
-                    if ($scope.page === "1") {
+                    if ($scope.page < "2") {
                         $scope.preState = true
                     }
-                    switch (check) {
-                        case 0:
-                            $scope.paging($scope.userList);
-                            break;
-                        case 1:
-                            $rootScope.searchData = $location.search();
-                            $scope.userList = $filter('searched')($scope.userList);
-                            $scope.paging($scope.userList);
-                            break;
-
+                    for (var x in $location.search()) {
+                        $scope.userList = $filter('searched')($scope.userList);
+                        continue
                     }
-
+                    $scope.paging($scope.userList);
+        /*************每次数据获取将URL搜索条件提取用于初始化select*********/
                     $scope.searchData = $location.search();
-                    /*URL取搜索条件*/
-                    if (!isNaN($scope.searchData.type)) {   /*读取URL条件初始化selected*/
-                        $scope.selectType = $scope.type[$scope.searchData.type].value;
+                    for(var property in  $scope.searchData ){
+                        switch (property){
+                            case "type":
+                                $scope.selectType=$scope.searchData[property]*1;
+                                break;
+                            case "talent":
+                                $scope.selectTalent=$scope.searchData[property]*1;
+                                break;
+                            case "level":
+                                $scope.selectLevel=$scope.searchData[property]*1;
+                                break;
+                        }
                     }
-
-                    if (!isNaN($scope.searchData.talent)) {
-                        $scope.selectTalent = $scope.talent[$scope.searchData.talent].value;
-                    }
-
-                    if (!isNaN($scope.searchData.level)) {
-                        $scope.selectLevel = $scope.level[$scope.searchData.level].value;
-                    }
+        /*******************************end*********************/
                 }
-
-
             });
-    };
-    $scope.test();
+    })();
 
-    //分页
+    /**----------------- 分页--------------------***/
     $scope.paging = function (data) {
         $scope.array = [];
         for (var i = 0; i < data.length; i++) {
-            if (($scope.page - 1) * 8 <= i && i <= ($scope.page - 1) * 8 + 7) {
+            if (($scope.page - 1) * 8 <= i && i <= ($scope.page - 1) * 8 + 7) { //每页8行数据
                 $scope.array.push(data[i])
             }
         }
@@ -136,69 +115,54 @@ routerApp.controller("listCtl", function ($scope, $http, $location, $rootScope, 
         } else {
             $scope.nextState = false
         }
-
     }
-    /*翻页*/
-
+    /****************翻页**********/
     $scope.nextPage = function () {
-
         $scope.page++;
-        $location.hash($scope.page)
+        $location.hash($scope.page);
         $scope.preState = false;
-        $scope.test();
-
-
+        $scope.request();
     };
     $scope.prePage = function () {
         $scope.page--;
+        if ($scope.page < "2") { //防止点击频率过高disabled失效
+            $scope.preState = true
+        }
         $location.hash($scope.page)
-        $scope.test()
+        $scope.request()
     };
-    /*搜索*/
+    /*----------------------搜索--------------------*/
     $scope.search = function () {
-        $scope.searchData = $location.search();
-        /*URL取搜索条件*/
-
-
         $scope.page = 1;
-        $location.hash($scope.page);
-        /*页码充值哈希值*/
-        $location.search({
+        $location.hash($scope.page);//页码重置URL哈希值
+        $location.search({//检索条件存储URL
             "type": $scope.selectType, "talent": $scope.selectTalent,
             "level": $scope.selectLevel
         });
-        /*搜索条件*/
-        $scope.test();
-
+        $scope.request();
     }
 });
-routerApp.filter("searched", function ($rootScope) {
+routerApp.filter("searched", function ($location) {
     return function (data) {
-
         var userData = [];
-
-        var a = $rootScope.searchData
+        var oBject = $location.search();
+        console.log($location.search())
         for (var i = 0; i < data.length; i++) {
-            var y = 0;
-            var x = 0;
-
-            for (var b in a) {
-
-
-                if (a[b] === data[i][b]) {
-                    x++
-
+            var y = 0, x = 0,z = 0;
+            for (var property in oBject) {//遍历属性
+                z++;
+                if (oBject[property] == data[i][property]) {//过滤搜索函数的值类型为numbe
+                    x++                                     //刷新通过url取的值为string 全等将不能通过
                 }
-                y++
-                if (x === y) {
-                    userData.push(data[i]);
-                }
+                y++}
+            if (x === y) {//每当url中属性与对象配对成功一次X+1；y为url所包含的属性数量
+                userData.push(data[i]);
             }
-
+            if (!z) {//URL内无属性值停止过滤函数
+                return
+            }
         }
         return userData;
-
     }
-
-})
+});
 
