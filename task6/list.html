@@ -27,7 +27,7 @@
         <p>列表管理</p>
         <div class="filter">
             <label for="type">类　型</label>
-            <select id="type" data-ng-model="selectType" data-ng-options="x.value as x.name for x in type"></select>
+                <select id="type" data-ng-model="selectType" data-ng-options="x.value as x.name for x in type"></select>
             <label for="talent">资　质</label>
             <select id="talent" data-ng-model="selectTalent" data-ng-options="x.value as x.name for x in talent"></select>
             <label for="level">修行等级</label>
@@ -45,7 +45,7 @@
                 <dt>操作</dt>
             </dl>
             <div class="detail">
-                <ul data-ng-repeat="user in userList|filter:searchData">
+                <ul data-ng-repeat="user in userList">
                     <li data-ng-bind="user.id "></li>
                     <li data-ng-bind="user.name"></li>
                     <li data-ng-bind="localeData.type[user.type-1]"></li>
@@ -58,9 +58,9 @@
             </div>
         </div>
         <div class="page">
-            <button class="pre" disabled><</button>
-            <p class="page-bar">第<span>1</span>页</p>
-            <button class="next">></button>
+            <button class="pre" data-ng-disabled="preState" data-ng-click="prePage()"><</button>
+            <p class="page-bar">第<span data-ng-bind="page"></span>页</p>
+            <button class="next" data-ng-disabled="nextState" data-ng-click="nextPage()">></button>
         </div>
     </div>
 </main>
