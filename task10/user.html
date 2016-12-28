@@ -1,0 +1,29 @@
+<div class="row">
+    <p class=" content-title col-md-12">个人信息</p>
+    <form target="_blank" role="form">
+        <div class=" form-group form-inline ">
+            <label class="col-md-2 col-sx-2" for="name">登录名:</label>
+            <input class="form-control" type="text" id="name" name="name" placeholder="请输入2-5位中文" maxlength="5">
+        </div>
+        <div class="form-group form-inline">
+            <label for="qq" class="col-md-2">密码:</label>
+            <input class="form-control" type="text" id="qq" name="qq" placeholder="请输入6-15位数字" maxlength="15">
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <input class="pull-right" style="max-width:100%" type="file"
+                   onchange="angular.element(this).scope().upLoad(this.files)">
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <button class="pull-left" type="button" data-ng-click="uploaded()">上传</button>
+        </div>
+    </form>
+    <div class="file-show col-md-12" id="show">
+        <img data-ng-src="{{imageUrl}}" alt="">
+        <img id="after" ng-src="{{imageUrl}}" alt="本地预览">
+        <span data-ng-bind="netUrl"></span>
+    </div>
+</div>
+
+
+
+

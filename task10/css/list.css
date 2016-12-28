@@ -1,0 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  min-width: 1250px;
+}
+body {
+  border: 1px solid #ccc;
+  height: 800px;
+}
+header {
+  background-color: #fbfbfb;
+  height: 60px;
+  border: 1px solid #ccc;
+  margin: -1px;
+}
+header b {
+  height: 60px;
+  line-height: 60px;
+  margin-left: 60px;
+}
+header span {
+  font-size: 14px;
+}
+header img {
+  width: 25px;
+  vertical-align: middle;
+  margin-left: 20px;
+  display: none;
+}
+header button {
+  width: 80px;
+  height: 30px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin-right: 20px;
+  font-size: 14px;
+  margin-left: 20px;
+}
+header .user-msg {
+  height: 60px;
+  line-height: 60px;
+  float: right;
+}
+.nav-left {
+  list-style: none;
+  margin: 15px 10px;
+  display: inline-block;
+}
+.nav-left li {
+  border: 1px solid #ccc;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  margin: -1px;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+main {
+  position: absolute;
+  right: 20px;
+  top: 85px;
+  left: 230px;
+  height: 720px;
+  border: 1px solid #ccc;
+  min-width: 1020px;
+}
+main p {
+  background-color: #f2f2f2;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+  padding-left: 20px;
+}
+select {
+  height: 35px;
+  width: 157px;
+}
+.filter {
+  margin: 20px auto  ;
+}
+.filter label {
+  margin-right: 10px;
+  margin-left: 40px;
+}
+.filter button {
+  width: 100px;
+  height: 35px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  -webkit-border-radius: 5px;
+  margin-left: 100px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.user-list {
+  min-width: 970px;
+  width: 90%;
+  height: 510px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #000;
+}
+.user-list .detail {
+  height: 408px;
+  overflow: auto;
+  width: 100%;
+}
+.user-list .detail dl {
+  width: 20%;
+  margin-top: 0;
+  border-top: none;
+  float: left;
+}
+.user-list .detail dd {
+  width: 100%;
+}
+.user-list ul {
+  list-style: none;
+  width: 100%;
+}
+.user-list ul li {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  width: 20%;
+  float: left;
+}
+.user-list ul li button {
+  width: 65px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  line-height: 17px;
+  margin: 5px;
+}
+.user-list p {
+  display: inline-block;
+  background-color: #fff;
+  border: none;
+}
+.user-list .add {
+  width: 100px;
+  height: 35px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  margin: 5px 10px;
+  -webkit-border-radius: 5px;
+  margin-left: 100px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  float: right;
+}
+.user-list dl {
+  margin-top: 10px;
+  border-top: 1px solid #000 ;
+}
+.user-list dt {
+  float: left;
+  width: 20%;
+  text-align: center;
+  background-color: #f2f2f2;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold ;
+  border-bottom: 1px solid #ccc;
+}
+.user-list dd {
+  float: left;
+  width: 20%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #ccc ;
+}
+.user-list dd button {
+  width: 65px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  line-height: 17px;
+  margin: 5px;
+}
+.page-bar {
+  background-color: #fff;
+  float: left;
+  width: 88px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  display: inline-block;
+  padding: 0;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: none;
+}
+.pre,
+.next {
+  height: 34px;
+  width: 34px;
+  float: left;
+  border: none;
+  background-color: #fff;
+  color: lightblue;
+}
+.page {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+  overflow: hidden;
+  margin: 10px 5%;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}

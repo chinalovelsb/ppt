@@ -1,0 +1,56 @@
+<div class="row">
+    <p class=" content-title col-md-12">列表管理</p>
+    <form>
+        <div class="col-md-3 col-sm-6 col-xs-6 s-center">
+            <label for="type">类　型</label>
+            <select id="type" data-ng-model="selectType"
+                    data-ng-options="x.value as x.name for x in type"></select>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 s-center">
+            <label for="talent">资　质</label>
+            <select id="talent" data-ng-model="selectTalent"
+                    data-ng-options="x.value as x.name for x in talent"></select>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-9 s-center">
+            <label for="level">修行等级</label>
+            <select id="level" data-ng-model="selectLevel"
+                    data-ng-options="x.value as x.name for x in level"></select>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-3 s-center">
+            <button class="btn btn-primary" type=button id="search" data-ng-click="search()">搜索</button>
+        </div>
+    </form>
+    <div class="user-list">
+        <div class="col-sm-12 content-title">
+            <span class="col-md-10 col-sm-10 col-xs-10">内容列表</span>
+
+            <div class="col-md-2 col-sm-2 col-xs-2 txt-right">
+                <button class="btn btn-default ">新增</button>
+            </div>
+        </div>
+        <table class="detail table">
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>类型</th>
+                <th>报名时间</th>
+                <th>操作</th>
+            </tr>
+            <tr data-ng-repeat="user in userList">
+                <td data-ng-bind="user.id"></td>
+                <td data-ng-bind="user.name"></td>
+                <td data-ng-bind="localeData.type[user.type-1]"></td>
+                <td data-ng-bind="user.joinTime|timestamp"></td>
+                <td>
+                    <button type="button" class="edit" data-ng-click="edit()">编辑</button>
+                    <button type="button" class="del" data-ng-click="del()">删除</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="page ">
+        <button class="pre btn " data-ng-disabled="preState" data-ng-click="prePage()"><</button>
+        <label class="page-bar">第<span class="page-num" data-ng-bind="page"></span>页</label>
+        <button class="next btn" data-ng-disabled="nextState" data-ng-click="nextPage()">></button>
+    </div>
+</div>

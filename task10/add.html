@@ -1,0 +1,93 @@
+
+<div class="row" >
+    <p class=" content-title col-md-12">新增页面</p>
+    <form target="_blank" class="col-md-12  center" role="form" name="myForm" novalidate="">
+        <div class="row form-group form-inline ">
+            <label class="col-md-2 col-sx-2" for="name">姓名:</label>
+            <input class="form-control" type="text" id="name" name="name" data-ng-model="name" data-ng-blur="check()" placeholder="请输入2-5位中文" required="">
+            <span style="color: red" data-ng-show="checkName &&!myForm.name.$pristine">请输入2-6位中文字符</span>
+
+        </div>
+        <div class="row form-group form-inline">
+            <label for="qq" class="col-md-2">QQ:</label>
+            <input class="form-control" data-ng-model="qq" type="number" id="qq" name="qq" placeholder="请输入6-15位数字" data-ng-blur="check()" required="">
+            <span style="color: red" data-ng-show="checkQQ &&!myForm.qq.$pristine">请输入6-15位数字</span>
+
+        </div>
+        <div class="row">
+            <label class="col-md-2 col-sx-2">修真类型:</label>
+            <div class="form-inline col-md-8">
+                <input type="radio" name="type" id="type1" value="1" data-ng-model="type">
+                <label for="type1">CSS</label>
+                <input type="radio" name="type" id="type2" value="2" data-ng-model="type">
+                <label for="type2">JS</label>
+                <input type="radio" name="type" id="type3" value="3" data-ng-model="type">
+                <label for="type3">JAVA</label>
+                <input type="radio" name="type" id="type4" value="4" data-ng-model="type">
+                <label for="type4">运维</label>
+                <input type="radio" name="type" id="type5" value="5" data-ng-model="type">
+                <label for="type5">DBA</label>
+                <input type="radio" name="type" id="type6" value="6" data-ng-model="type">
+                <label for="type6">产品</label>
+                <input type="radio" name="type" id="type7" value="7" data-ng-model="type">
+                <label for="type7">IOS</label>
+                <input type="radio" name="type" id="type8" value="8" data-ng-model="type">
+                <label for="type8">ANDROID</label> <span style="color: red" data-ng-show="checkType &&!myForm.type.$pristine">请选择学习类型</span>
+
+            </div>
+        </div>
+        <div class="row form-group form-inline">
+            <label for="school" class="col-md-2 col-sx-2">毕业院校：</label>
+            <input class="form-control" type="text" id="school" name="school" data-ng-model="school" data-ng-blur="check()">
+            <span style="color: red" data-ng-show="checkSchool &&!myForm.school.$pristine">填写毕业院校</span>
+
+        </div>
+        <div class="row form-group form-inline">
+            <label class="col-md-2 col-sx-2">资质：</label>
+            <div class="col-md-8">
+                <input type="radio" id="talent1" name="talent" value="1" data-ng-model="talent">
+                <label for="talent1">学霸</label>
+                <input type="radio" id="talent2" name="talent" value="2" data-ng-model="talent">
+                <label for="talent2">学渣</label> <span style="color: red" data-ng-show="checkTalent &&!myForm.talent.$pristine">请选择资质</span>
+
+            </div>
+        </div>
+        <div class="row form-group form-inline">
+            <label class="col-md-2 col-sx-2">修行等级：</label>
+            <div class="col-md-9">
+                <input type="radio" id="level1" name="level" value="1" data-ng-model="level">
+                <label for="level1">0基础</label>
+                <input type="radio" id="level2" name="level" value="2" data-ng-model="level">
+                <label for="level2">修行3个月以内</label>
+                <input type="radio" id="level3" name="level" value="3" data-ng-model="level">
+                <label for="level3">修行6个月以内</label>
+                <input type="radio" id="level4" name="level" value="4" data-ng-model="level">
+                <label for="level4">修行1年以内</label>
+                <input type="radio" id="level5" name="level" value="5" data-ng-model="level">
+                <label for="level5">修行3年以内</label>
+                <input type="radio" id="level6" name="level" value="6" data-ng-model="level">
+                <label for="level6">修行3年以上</label> <span style="color: red" data-ng-show="checkLevel &&!myForm.level.$pristine">选择修行等级</span>
+
+            </div>
+        </div>
+        <div class="row form-group form-inline">
+            <label for="joinTime" class="col-md-2 col-sx-2">预计入学时间：</label>
+            <input class="form-control sang_Calender" type="datetime-local" id="joinTime" name="joinTime" data-ng-blur="check()" data-ng-model="joinTime">
+            <span style="color: red" data-ng-show="checkJoinTime &&!myForm.joinTime.$pristine">选择时间</span>
+
+        </div>
+        <div class="row form-group form-inline">
+            <label class="col-md-2 col-sx-2">修行立愿：</label>
+            <div class="col-md-12 col-sm-12">
+                <script  ype="text/html" style="margin:auto;height:300px;width:100%;" ng-model="wish" meta-umeditor
+                           meta-umeditor-config='config' >
+           </script>
+            </div>
+            <span style="color: red" data-ng-show="checkWish">填写立愿</span>
+        </div>
+        <div class="row" style="text-align: center">
+            <button class="btn btn-primary " type="button" id="submit" data-ng-disabled="checkForm" data-ng-click="submitData()">确认</button>
+            <button type="reset" class="btn btn-danger">取消</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="CN-zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>login</title>
+    <link href="css/login.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type=text/css>
+        input:-webkit-autofill {
+            background-color: #fff !important;
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+        }
+    </style>
+</head>
+<body >
+<form class="login-box" autocomplete=off data-ng-app="routerApp" data-ng-controller="loginCtl">
+    <p>后台登录</p>
+    <div class="user">
+        <span></span>
+        <input type="text" id="user" placeholder="用户名" data-ng-model="mobile">
+    </div>
+    <div class="pwd">
+        <span></span>
+        <input type="password" id="pwd" placeholder="密码" data-ng-model="pwd">
+    </div>
+    <p class="msg" data-ng-bind="msg"></p>
+    <button class="btn" type="button" data-ng-click="login()">登录</button>
+</form>
+</body>
+</html>
