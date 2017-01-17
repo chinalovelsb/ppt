@@ -25,7 +25,6 @@ body {
 
     .msg {
         position: absolute;
-        top: 240px;
         left: 100px;
         width: 100px;
         height: 20px;
@@ -89,7 +88,7 @@ body {
         margin-top: 50px;
     }
 }
-
+input{ margin: auto;height:20px}
 @media screen and (max-width: 1200px) {
     input[type=text]{  border: none;
         outline-style: none;
@@ -99,7 +98,6 @@ body {
         display: block;}
     .msg {
         position: absolute;
-        top: 152px;
         left: 51px;
         width: 100px;
         height: 20px;
@@ -174,6 +172,6 @@ body {
         width: 80.5%;
         height: 37px;
         cursor: pointer;
-        margin-top: 31px;
+        margin-top: 22px;
     }
 }
