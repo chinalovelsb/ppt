@@ -1,0 +1,41 @@
+<main>
+    <div class="container">
+        <div class="title">
+            <h4>推荐职位</h4>
+        </div>
+        <div class="new_job row " style="height:345px">
+            <div><span>关键词：</span><input type="text"><span>当前的关键词：</span></div>
+        </div>
+        <div class="new_job row ">
+            <div class="job_list col-md-12" ng-repeat="job in jobList" ui-sref="profession({id:job.id})">
+                <div class="col-md-6 rest_pd company_msg job_name">
+                    <p><b>{{job.name}}</b><span>发布时间：{{job.updateAt|timestamp}}</span></p>
+                    <p class="">{{job|compensation}}</p>
+                    <p>北京-海淀区/大战及以上/3年经验</p>
+                </div>
+                <div class="col-md-6 job_company rest_pd">
+                    <div class="job_company_name ">
+                        <p><b>{{job.companyName}}</b></p>
+                        <div><span ng-repeat="industry in job.industryList|industry">{{industry}}<span ng-if="!$last">/</span></span></div>
+                        <span class="tag">五险一金</span>
+                    </div>
+
+                    <img class="img-thumbnail pull-right" ng-src="{{job.logo}}">
+                </div>
+            </div>
+            <div ng-controller="PaginationDemoCtrl" class="page_bar">
+                <ul uib-pagination boundary-links=true first-text=首页 last-text=末页 previous-text=<
+                    next-text='>'
+                    total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize"
+                    class="pagination-sm" boundary-link-numbers="false" rotate="false"
+                    force-ellipses=true
+                    num-pages="numPages"></ul>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</main>

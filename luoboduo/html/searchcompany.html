@@ -1,0 +1,73 @@
+<div class="block_wrap col-md-12">
+    <form class="form-horizontal search_tab col-md-12">
+        <div class="form-group form-inline ">
+
+            <label>关 键 词 ：</label>
+            <input type="text" class="form-control keyword" ng-model="vm.keyword">
+
+
+            <span class="keyword_show">当前关键词：{{vm.keyword}}</span>
+        </div>
+        <div class="form-group">
+            <label>所在地区：</label>
+            <a ng-click="vm.choose($index,'city')" ng-class="{active:$index==vm.chosen.city}" ng-repeat="item in local">{{item.name}}</a>
+
+        </div>
+        <div class="form-group">
+            <label>所属行业：</label>
+            <a ng-repeat="item in trade" ng-click="vm.choose($index,'industry')"
+               ng-class="{active:$index==vm.chosen.industry}">{{item.industry}}</a>
+            <a></a>
+        </div>
+        <div class="form-group">
+            <label>融资规模：</label>
+            <a ng-repeat="item in financingtype" ng-click="vm.choose($index,'financingtype')"
+               ng-class="{active:$index==vm.chosen.financingtype}">{{item.name}}</a>
+            <a></a>
+        </div>
+        <div class="text-right form-group">
+            <a ng-click="vm.clean()">清空</a><a class="active" ng-click="vm.search(vm.params)">搜索</a>
+        </div>
+
+    </form>
+
+</div>
+<div class="block_wrap col-md-12 search_company_result bd">
+    <div class=" col-md-4 company" ng-repeat="item in vm.items" ui-sref="company({id:item.id})">
+        <div class="company_item block_wrap pull-right pd_clear">
+            <div class="format_flex ">
+                <div class="col-lg-4 col-md-5 col-xs-4  rest_pd">
+                    <div class="company_carousel_logo ">
+                        <img ng-src="{{item.logo}}">
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-md-7 col-xs-8 rest_pd">
+                    <div class="item_child_pd  rest_pd_r">
+                        <div class="format_flex_text  ">
+                            <p class="text_pre"><b>{{item.name}}</b></p>
+                            <p class="text_pre">{{item.slogan}}</p>
+                            <div>
+                                <span style="color:red">{{item.professionNum}}</span><span>个在招职位</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="company_info">
+                <span class="text_pre"><span ng-repeat="x in item.industryList|industry">{{x}}<span
+                        ng-if="!$last">/</span></span></span>
+                <span>{{item|financingtype}}</span>
+                <span>{{item|city}}</span>
+            </div>
+        </div>
+    </div>
+    <div  class="page_bar">
+        <ul uib-pagination boundary-links='true' first-text='首页' last-text='末页' previous-text='<'
+            next-text='>' total-items="vm.totalItems" ng-model="vm.currentPage" max-size="5"
+            class="pagination-sm" boundary-link-numbers="false" rotate="false"
+            force-ellipses=true ng-change="vm.pagechanged()">
+        </ul>
+    </div>
+</div>

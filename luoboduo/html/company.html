@@ -1,0 +1,69 @@
+<main>
+    <div class="container">
+        <div class="row detail_company_title block_wrap">
+            <div class="logo">
+                <img class="img-responsive" ng-src="{{company.logo}}">
+            </div>
+            <div class="detail_company_content">
+                <p><b>{{company.name}}</b>
+                    <span class="verify" ng-show="!!company.approved">
+                    <img src="../images/company-home-2.png">萝卜多验证</span></p>
+                <p class="text_pre">{{company.slogan}}</p>
+                <div>
+                    <span class="">测试</span>
+                </div>
+            </div>
+        </div>
+        <div class="rest_pd_r block_wrap row ">
+            <div class=" col-md-8 rest_pd_r">
+                <div class="page_tag  row">
+                    <a ui-sref=".companyInfo({id:company.id})">公司详情</a>
+                    <a ui-sref=".companyJob({id:company.id})">在招职位</a>
+                </div>
+                <div class="detail_company_info  row" ui-view>
+                    <h4>公司产品</h4>
+                    <div class="detail_company_title">
+                            <img class="logo img-thumbnail" ng-src="{{company.logo}}">
+                        <div class="detail_company_content">
+                            <p><b>{{company.name}}</b>
+
+                            <p class="text_pre">{{company.slogan}}</p>
+                            <div>
+                                <span class="">测试</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>公司介绍</h4>
+                    <p class="text">
+                        {{company.summary}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 rest_pd company">
+                <div class='spacer_wire '>
+                    <span class="col-md-4 col-xs-4 rest_pd_l"><b>公司信息</b></span>
+                    <span class="col-md-8 col-xs-8"></span>
+                </div>
+                <p class="text-center pd_t bold">{{profession.productName||profession.companyName}}</p>
+
+                <div class=" company_intro">
+                    <p class="user_icon" ng-bind="company.totalNum"></p>
+                    <p class="company_type_icon" >
+                        <span ng-repeat="industry in industryList">{{industry}}<span ng-if="!$last">/</span></span>
+                    </p>
+                    <p class="localicon" ng-bind="city"></p>
+                </div>
+
+                <div class='spacer_wire '>
+                    <span class="col-md-4 col-xs-4 rest_pd_l"><b>公司标签</b></span>
+                    <span class="col-md-8 col-xs-8"></span>
+                </div>
+                <ul class=" company_intro_tag">
+                    <li class="tag" ng-repeat="tag in tag">{{tag.tag}}</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</main>

@@ -1,0 +1,21 @@
+<h4>在招职位{{total}}个</h4>
+<div class="profession_type col-md-12">
+    <b>职业类别</b>
+    <ul>
+        <li>全部</li>
+        <li>产品</li>
+        <li>技术</li>
+    </ul>
+</div>
+
+<div class=" col-md-12 ">
+    <div class="row profession_card" ng-repeat="profession in professionList" ui-sref="profession({id:profession.id})">
+        <div class= "demand col-md-8">
+            <b>{{profession.name}}[{{profession|city}}]</b>
+            <span ng-bind="profession|compensation"></span>
+            <span>经验{{profession|experience}}/{{profession|education}}/全职</span>
+        </div>
+        <span class="col-md-4 text-right updateTime">{{profession.updateAt|timestamp}}发布</span>
+    </div>
+
+</div>

@@ -1,0 +1,182 @@
+<main class="pd-zore">
+<div class="wrap" id="bannerFirst">
+
+    <img class="img-responsive" ng-src="{{bannerUrl}}">
+
+</div>
+
+<div class="wrap">
+
+
+    <div class="container">
+        <div class="row wrap_small">
+            <div class="col-md-3 exhibition text-center ">
+                <div class="exhibition_icon">
+                    <img src="../images/jianjie-1.png">
+                </div>
+
+                    <p><b>超短响应时间</b></p>
+                    <p>48小时高效推荐</p>
+            </div>
+            <div class="col-md-3  exhibition  text-center">
+                <div class="exhibition_icon">
+                    <img src="../images/jianjie-2.png">
+                </div>
+                <p><b>行业1/3的价格</b></p>
+                <p>成功推荐仅收费1月工资</p>
+
+            </div>
+            <div class="col-md-3  exhibition bd-right  text-center">
+                <div class="exhibition_icon ">
+                    <img src="../images/jianjie-3.png">
+                </div>
+                <p><b>三维的人才评测</b></p>
+                <p>技术人事背景三维评定</p>
+
+            </div>
+            <div class="col-md-3  exhibition_data">
+                <span>500+</span>
+                <p>人才入职</p>
+                <span>498人</span>
+                <p>成功转正</p>
+                <span>98%</span>
+                <p>成功率</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="wrap_small wrap_small_pd text-center">
+        <div class="title_pd">
+            <h4>
+                <b>最新职位</b>
+                <span class="underline"></span>
+            </h4>
+            <p>SERVICE FLOW</p>
+        </div>
+        <div class="title_content">
+           <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                &lt;!&ndash; 轮播（Carousel）指标 &ndash;&gt;
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                &lt;!&ndash; 轮播（Carousel）项目 &ndash;&gt;
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="../img/banner-3.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="../img/01.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="../img/02.jpg" alt="Third slide">
+                    </div>
+                </div>
+                &lt;!&ndash; 轮播（Carousel）导航 &ndash;&gt;
+                <a class="carousel_control ctl_left" href="#myCarousel"
+                   data-slide="prev">&lsaquo;</a>
+                <a class="carousel_control ctl_right" href="#myCarousel"
+                   data-slide="next">&rsaquo;</a>
+            </div>-->
+
+                <div class="text-right">
+                    <a class="more" ui-sref="list">更多></a>
+                    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" class="row">
+                            <div class=" col-md-3" ng-repeat="item in slide.list" ui-sref="profession({id:item.id})" >
+                                <div class="carousel_item">
+                                    <div class="carousel_logo">
+                                        <img ng-src="{{item.logo}}" style="margin:auto;" >
+                                    </div>
+                                    <p><b>{{item.name}}</b><span></span></p>
+                                    <p>{{item.companyName}}</p>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+
+<div class="wrap">
+    <div class="container">
+        <div class=" wrap_small_pd text-center">
+            <div class="title_pd">
+                <h4><b>服务流程</b>
+                    <span class="underline"></span></h4>
+                <p>PARTNER ADVICE</p>
+            </div>
+            <div class="service row">
+                <div class="service_flow_line">
+                    <img class="icon_1" src="../images/arrow.png">
+                    <img class="icon_2" src="../images/arrow.png">
+                </div>
+                <div class="service_flow col-md-2 col-xs-12 col-md-offset-1">
+                    <img src="../images/flow-1.png">
+                    <p>1.意向洽谈，深入评审</p>
+                </div>
+
+                <div class="service_flow col-md-2 col-xs-12 col-md-offset-2">
+                    <img src="../images/flow-2.png">
+                    <p>1.意向洽谈，深入评审</p>
+                </div>
+                <div class=" service_flow_line">
+
+                </div>
+                <div class="service_flow col-md-2 col-xs-12 col-md-offset-2">
+                    <img src="../images/flow-3.png">
+                    <p>1.意向洽谈，深入评审</p>
+                </div>
+            </div>
+            <div class="service row">
+                <div class="service_flow_line">
+                    <img class="icon_1" src="../images/arrow.png">
+                    <img class="icon_2" src="../images/arrow.png">
+                </div>
+                <div class="service_flow col-md-2 col-xs-12 col-md-offset-1">
+                    <img src="../images/flow-4.png">
+                    <p>1.意向洽谈，深入评审</p>
+                </div>
+                <div class=" service_flow_line">
+
+                </div>
+                <div class="service_flow col-md-2 col-xs-12 col-md-offset-2">
+                    <img src="../images/flow-5.png">
+                    <p>1.意向洽谈，深入评审</p>
+                </div>
+
+                <div class="service_flow col-md-2 col-xs-12 col-md-offset-2 ">
+                    <img src="../images/flow-6.png">
+                    <p>1.意向洽谈，深入评审</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="wrap_small wrap_small_pd text-center">
+        <div class="title_pd">
+            <h4><b>伙伴之言</b>
+                <span class="underline"></span></h4>
+            <p>NEW POSITION</p>
+        </div>
+        <ul class="company_carousel row">
+            <li class="col-md-3">1</li>
+            <li class="col-md-3">1</li>
+            <li class="col-md-3">1</li>
+            <li class="col-md-3">1</li>
+
+        </ul>
+    </div>
+</div>
+</div>
+</main>

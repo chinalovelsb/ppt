@@ -1,0 +1,32 @@
+.nav_left {
+  background-color: #fff;
+  padding-left: 0;
+  padding-right: 0;
+}
+.nav_left > li {
+  height: 40px;
+  line-height: 40px;
+  border-left: 5px solid transparent;
+}
+.nav_left > li:hover {
+  border-left: 5px solid #fc2b47;
+  background-color: #f6f7f8;
+}
+.nav_left > li > img {
+  vertical-align: sub;
+  margin-right: 8px;
+}
+.about_content {
+  background-color: #fff;
+  padding: 40px 75px;
+  height: 610px;
+}
+.about_content > p {
+  margin-left: 13px;
+  margin-bottom: 20px;
+}
+.about_content > h4 {
+  border-left: 5px solid #fc2b47;
+  margin: 40px 0;
+  padding-left: 7px;
+}

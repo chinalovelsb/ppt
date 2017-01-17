@@ -1,0 +1,149 @@
+.bd-right {
+  border-right: 1px solid #e8e8e8;
+}
+.pd-zore {
+  padding: 0;
+}
+.exhibition {
+  height: 132px;
+  margin: 93px 0;
+}
+.exhibition > p:last-child {
+  text-align: center;
+  font-size: 0.14rem;
+}
+.exhibition_icon {
+  height: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+.exhibition_data {
+  margin: 70px 0;
+  text-align: center;
+}
+.exhibition_data span {
+  color: red;
+}
+.exhibition_data p {
+  margin-bottom: 20px;
+}
+.service {
+  position: relative;
+  margin-bottom: 40px;
+}
+.service_flow {
+  z-index: 99;
+  padding: 0;
+  border: 1px solid #e6eaec;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.service_flow p {
+  margin: 20px auto;
+}
+.service_flow img {
+  max-width: 100%;
+}
+.service_flow_line {
+  border-bottom: 2px dashed #ffd8d9;
+  width: 50%;
+  left: 25%;
+  position: absolute;
+  top: 50%;
+}
+.service_flow_line .icon_1 {
+  left: 15%;
+}
+.service_flow_line .icon_2 {
+  right: 14%;
+}
+.company_carousel {
+  overflow: hidden;
+}
+.company_carousel > li {
+  height: 290px;
+}
+.service_flow_line > img {
+  position: absolute;
+  top: -12px;
+  z-index: 1;
+}
+.carousel_item > h4 {
+  border-top: 1px solid #e8e8e8;
+  padding: 10px;
+  margin: 0;
+}
+.carousel_logo {
+  padding: 10px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 10px;
+}
+.carousel-indicators {
+  display: none;
+}
+.carousel_item {
+  height: 260px;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.carousel_item span {
+  display: inline-block;
+  background-color: #eb5255;
+  position: absolute;
+  height: 1px;
+  width: 20px;
+  bottom: -3px;
+  left: 50%;
+  margin-left: -10px;
+}
+.carousel_item p {
+  position: relative;
+}
+.carousel_item > p:last-child {
+  font-size: 0.14rem;
+}
+.carousel_item .img-responsive {
+  margin: 10px;
+}
+.carousel_item img {
+  max-width: 100%;
+  height: 165px;
+}
+.title_content .carousel {
+  margin-top: 18px;
+}
+a:hover {
+  text-decoration: none;
+}
+.carousel-control {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  background: #fff;
+  margin-top: -18px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 28px;
+  font-size: 40px;
+  color: #F44336;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  filter: alpha(opacity=50);
+  height: 36px;
+  line-height: 27px;
+}
+.carousel-control.glyphicon-chevron-left {
+  font-size: 20px;
+}
+.carousel-control.left {
+  left: -60px;
+  background-image: none;
+  background-color: #fff;
+}
+.carousel-control.right {
+  right: -60px;
+  background-image: none;
+  background-color: #fff;
+}

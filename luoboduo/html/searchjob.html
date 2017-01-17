@@ -1,0 +1,75 @@
+
+<div class="block_wrap col-md-12">
+            <form class="form-horizontal search_tab col-md-12">
+                <div class="form-group form-inline">
+                    <label >关 键 词 ：</label>
+                    <input  type="text" class="form-control keyword" ng-model="vm.keyword">
+                    <span class="keyword_show">当前关键词：{{vm.keyword}}</span>
+                </div>
+                <div class="form-group">
+                    <label >所在地区：</label>
+                    <a ng-class="{active:$index==vm.chosen.city}" ng-click="vm.choose($index,'city')" ng-repeat="item in local" >{{item.name}}</a>
+
+                </div>
+                <div class="form-group">
+                    <label >所属行业：</label>
+                    <a ng-class="{active:$index==vm.chosen.industry}" ng-click="vm.choose($index,'industry')" ng-repeat="item in trade">{{item.industry}}</a>
+                    <a></a>
+                </div>
+                <div class="form-group">
+                    <label >学历要求：</label>
+                    <a ng-class="{active:$index==vm.chosen.education}" ng-click="vm.choose($index,'education')" ng-repeat="item in education">{{item.name}}</a>
+                    <a></a>
+                </div>
+                <div class="form-group">
+                    <label >工作经验：</label>
+                    <a ng-class="{active:$index==vm.chosen.experience}" ng-click="vm.choose($index,'experience')" ng-repeat="item in experience">{{item.name}}</a>
+                    <a></a>
+                </div>
+                <div class="form-group">
+                    <label >薪资水平：</label>
+                    <a ng-class="{active:$index==vm.chosen.compensation}" ng-click="vm.choose($index,'salary')"  ng-repeat="item in Salary">{{item.compensation}}</a>
+                    <a></a>
+                </div>
+                <div class="form-group">
+                    <label >发布时间：</label>
+                    <a ng-class="{active:$index==vm.chosen.pubdate}" ng-click="vm.choose($index,'pubdate')" ng-repeat="item in time">{{item.name}}</a>
+                    <a></a>
+                </div>
+                <div class="text-right form-group">
+                    <a ng-click="vm.clean()">清空</a><a class="active" ng-click="vm.search(vm.params)">搜索</a>
+                </div>
+            </form>
+        </div>
+<div class="block_wrap col-md-12 search_company_result">
+
+                <div class="job_list col-md-12" ng-repeat="job in jobList" ui-sref="profession({id:job.id})">
+                    <div class="col-md-6 rest_pd company_msg job_name">
+                        <p><b>{{job.name}}</b><span>发布时间：{{job.updateAt|timestamp}}</span></p>
+                        <p class="">{{job|compensation}}</p>
+                        <p>{{job|city}}-{{job|county}}/{{job|education}}/{{job|experience}}</p>
+                    </div>
+                    <div class="col-md-6 job_company rest_pd">
+                        <div class="col-md-9 col-xs-9 pd-zore format_flex_text">
+                        <div class="job_company_name  height_full">
+                            <p><b>{{job.companyName}}</b></p>
+                            <div><span ng-repeat="industry in job.industryList|industry">{{industry}}<span ng-if="!$last">/</span></span></div>
+                            <div class="text_pre text_wrap">
+                                <span class="tag" ng-repeat="tag in job.tags">{{tag.tag}}</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <img class="img-thumbnail pull-right" ng-src="{{job.logo}}">
+                    </div>
+
+                </div>
+    <div  class="page_bar">
+        <ul uib-pagination boundary-links='true' first-text='首页' last-text='末页' previous-text='<'
+            next-text='>' total-items="vm.totalItems" ng-model="vm.currentPage" max-size="5"
+            class="pagination-sm" boundary-link-numbers="false" rotate="false"
+            force-ellipses=true ng-change="vm.pagechanged()">
+        </ul>
+    </div>
+        </div>
+
