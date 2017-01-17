@@ -56,26 +56,51 @@ angular.module('routerApp')
         $(":radio").off().on("change", function () {
             $scope.check()
         });
-
-        $scope.submitData = function () {
-            $http({
-                url: '/student-ajax/student',
-                method: 'post',
-                data: $.param({
-                    "name": $scope.name,
-                    "qq": $scope.qq,
-                    "type": $scope.type,
-                    "school": $scope.school,
-                    "talent": $scope.talent,
-                    "level": $scope.level,
-                    "jointime": $scope.joinTime,
-                    "wish": $scope.wish
-                }),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-
-                .success(function (response) {
-                    alert(response.message)
+        if($location.search().id){
+            $scope.submitData = function () {
+                $http({
+                    url: '/student-ajax/student/'+$location.search().id,
+                    method: 'put',
+                    data: $.param({
+                        "name": $scope.name,
+                        "qq": $scope.qq,
+                        "type": $scope.type,
+                        "school": $scope.school,
+                        "talent": $scope.talent,
+                        "level": $scope.level,
+                        "jointime": $scope.joinTime,
+                        "wish": $scope.wish
+                    }),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 })
+
+                    .success(function (response) {
+                        alert(response.message)
+                    })
+            }
+
+        }else {
+            $scope.submitData = function () {
+                $http({
+                    url: '/student-ajax/student',
+                    method: 'post',
+                    data: $.param({
+                        "name": $scope.name,
+                        "qq": $scope.qq,
+                        "type": $scope.type,
+                        "school": $scope.school,
+                        "talent": $scope.talent,
+                        "level": $scope.level,
+                        "jointime": $scope.joinTime,
+                        "wish": $scope.wish
+                    }),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                })
+
+                    .success(function (response) {
+                        alert(response.message)
+                    })
+            }
         }
+
     });

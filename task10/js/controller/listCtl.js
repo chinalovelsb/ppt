@@ -32,13 +32,13 @@ angular.module('routerApp')
                         /*读取哈希值，若存在则保持页面/*否则返回第一页*/
                         !!$location.hash() ? $scope.page = $location.hash() : $scope.page = 1
 
-                        if ($scope.page < "2") { //禁用上一页
+                        if ($scope.page*1 < 2) { //禁用上一页
                             $scope.preState = true
                         }
 
                         for (var x in $location.search()) {//判空 根据url条件过滤数据
                             $scope.userList = $filter('searched')($scope.userList);
-                            return false;
+                           /* return false;*/
                         }
 
                         $scope.paging($scope.userList);//执行分页
@@ -87,7 +87,7 @@ angular.module('routerApp')
         };
         $scope.prePage = function () {
             $scope.page--;
-            if ($scope.page < "2") { //防止点击频率过高disabled失效
+            if ($scope.page < 2) { //防止点击频率过高disabled失效
                 $scope.preState = true
             }
             $location.hash($scope.page);
