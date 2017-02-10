@@ -1,90 +1,108 @@
 /**
  * Created by Master on 2017/1/8.
  */
-angular.module('app')
-    .factory('getProfession',['$q','$http',function ($q,$http) {
+"use strict"
+var app = angular.module('app')
+    .factory('requestData', ['$q', '$http', function ($q, $http) {
         return {
             //banner图
-            articleList:function (params) {
-                return $http.get('/lbd/a/article/search',{params:params})
+            articleList: function (params) {
+                return $http.get('/lbd/a/article/search', {params: params})
+
             },
 
-           //职位信息列表 (最新、推荐，页数，数量)
-            ProfessionList:function (params) {
-                return $http.get('/lbd/a/profession/search',{params:params})
+            //职位信息列表 (最新、推荐，页数，数量)
+            ProfessionList: function (params) {
+                return $http.get('/lbd/a/profession/search', {params: params})
             },
 
             //职业详情
-            ProfessionDetail:function (id) {
+            ProfessionDetail: function (id) {
                 var deferred = $q.defer(),
                     promise = deferred.promise;
-                    $http.get('/lbd/a/profession/' +id).success(function (res) {
-                        deferred.resolve(res.data)
-                    })
+                $http.get('/lbd/a/profession/' + id).success(function (res) {
+                    deferred.resolve(res.data)
+                });
                 return promise
             },
 
             //公司列表
-            companyList:function (params) {
-                return $http.get('/lbd/a/company/search',{params:params})
+            companyList: function (params) {
+                return $http.get('/lbd/a/company/search', {params: params})
             },
 
-            companyDetail:function (id) {
-                return $http.get('/lbd/a/company/'+id)
+            companyDetail: function (id) {
+                return $http.get('/lbd/a/company/' + id)
             }
 
         }
-    }])
-
-    //搜索面板
-    .factory('searchPanel',searchPanel);
-    searchPanel.$inject=[];
-    function searchPanel() {
-        return {
-            company:function (idx, type,vm) {
-                    switch (type){
-                        case 'industry':
-                            vm.chosen.industry=idx;
-                            idx===0?vm.params.industry='':vm.params.industry=idx-1;
-                            break;
-                        case 'financingtype':
-                            vm.chosen.financingtype=idx;
-                            idx===0?vm.params.financing='':vm.params.financing=idx-1;
-                            break;
-                        case 'city':
-                            vm.chosen.city=idx;
-                            idx===0?vm.params.city='':vm.params.city=idx;
-                            break;
-                    }
-            },
-            profession:function (idx, type, vm) {
-                    switch (type){
-                        case 'industry':
-                            vm.chosen.industry=idx;
-                            idx===0?vm.params.industry='':vm.params.industry=idx-1;
-                            break;
-                        case 'education':
-                            vm.chosen.education=idx;
-                            idx===0?vm.params.education='':vm.params.education=idx-1;
-                            break;
-                        case 'city':
-                            vm.chosen.city=idx;
-                            idx===0?vm.params.city='':vm.params.city=idx;
-                            break;
-                        case 'salary':
-                            vm.chosen.compensation=idx;
-                            idx===0?vm.params.compensation='':vm.params.compensation=idx-1;
-                            break;
-                        case 'experience':
-                            vm.chosen.experience=idx;
-                            idx===0?vm.params.experience='':vm.params.experience=idx-1;
-                            break;
-                        case 'pubdate':
-                            vm.chosen.pubdate=idx;
-                            idx===0?vm.params.pubdate='':vm.params.pubdate=idx;
-                            break;
-
-                }
-            }
+    }]);
+app.factory('clean', clean);
+function clean() {
+    return function (obj) {
+        for (var x in obj) {
+            angular.isArray(obj[x]) ? obj[x] = [null] : obj[x] = null;
         }
+        return obj;
     }
+}
+app.factory('duplicateRemoval', function () {
+    return function (n, arr) {
+        var inArr = false;
+        arr[0] === null ? arr = [] : '';
+        angular.forEach(arr, function (data, idx) {
+            data === n ? remove(idx) : '';
+        });
+        function remove(idx) {
+            arr.splice(idx, 1);
+            inArr = true;
+        }
+
+        inArr ? '' : arr.push(n);
+        return arr
+    }
+});
+//对象属性转number
+app.factory('toNum', function () {
+    return function (obj) {
+        if (angular.isArray(obj)) {
+            var arr = [];
+            angular.forEach(obj, function (data) {
+                arr.push(+data);
+                obj = arr
+            })
+        } else {
+            /*  for (var x in obj) {
+             isNaN(+obj[x]) ? '' : obj[x] = +obj[x]
+             }*/
+            angular.forEach(obj, function (data) {
+                isNaN(+data) ? '' : data = +data
+            })
+        }
+        return obj
+    }
+})
+app.factory('ObjIsNull', function () {
+    return function (obj) {
+        var bl;
+        angular.forEach(obj, function (data) {
+            return data ? bl = true : bl = false;
+        })
+        return bl
+    }
+})
+//URL存取参数
+app.factory('paramster', function ($location, toNum) {
+    function set(params) {
+        $location.search(params)
+    }
+
+    function get(param) {
+        return param ? $location.search()[param] : $location.search()
+    }
+
+    return {
+        set: set,
+        get: get
+    }
+})

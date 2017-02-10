@@ -3,11 +3,15 @@
         <div class="row">
             <div class="col-md-3">
                 <ul class="col-md-11 nav_left text-center wrap_small_pd">
-                    <li><img src="../images/about_03.png">关于我们</li>
-                    <li><img src="../images/about_07.png">联系我们</li>
+                    <li ng-click="vm.change(true)" ng-class="{'about-active':vm.card}"><span class="aboutus"></span>关于我们
+                    </li>
+                    <li ng-click="vm.change(false)" ng-class="{'about-active':!vm.card}">
+                        <sapn class="contactus"></sapn>
+                        联系我们
+                    </li>
                 </ul>
             </div>
-            <div class="col-md-9 rest_pd about_content">
+            <div class="col-md-9 rest_pd about_content" ng-show="vm.card">
                 <h4>什么是萝卜多</h4>
                 <p>
                     萝卜多是针对创业公司及独立人才寻找伙伴合作，提供多对多服务，以按需推荐的方式帮助创业团队及人才解决盲目寻找、
@@ -22,6 +26,19 @@
                     葡萄藤始终秉持促进中国企业创新与成长为愿景，凭借其团队丰富的行业经验和全球资源网络以及在业界的声誉不遗余力
                     地帮助创业家和他们的企业突破自我、 不断创新，共创事业，共享成功！
                 </p>
+            </div>
+            <div class="col-md-9 rest_pd about_content cpy" ng-show="!vm.card">
+                <div class=row>
+                    <p class="cpy-name col-md-12">北京葡萄腾信息技术有限公司</p>
+                    <p class="col-md-6"> 电话： (010)59478634</p>
+                    <p class="col-md-6"> 网址： www.luoboduo.com</p>
+                    <p class="col-md-6"> 邮箱： kefu@ptteng.com</p>
+                    <p class="col-md-6"> 地址： 北京市海淀区翠微路甲10院225室</p>
+                    <div class="col-md-12">
+                        <img class="img-responsive" src="../images/maps.png">
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

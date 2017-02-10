@@ -2,13 +2,20 @@
 @c-f: #999;
 @c-bd: #f6f7f8;
 @c-border: #e6eaec;
-html{font-size: 625%}
+html {
+  font-size: 625%
+}
+
 body {
   font-family: "Microsoft YaHei UI";
   font-size: 0.14rem;
 
 }
-a{color:#2b3d51}
+
+a {
+  color: #2b3d51
+}
+
 header {
   box-shadow: 0 5px 5px #eee;
 }
@@ -40,12 +47,11 @@ ul {
 nav > ul > li {
   height: 80px;
   float: left;
-  border-bottom: 2px solid @c-hover
+
 }
 
-
 footer {
-margin-top:20px;
+  margin-top: 20px;
   color: @c-f
 }
 
@@ -72,6 +78,7 @@ footer {
   }
 ;
 }
+
 .icon-bar {
   background-color: @c-hover
 }
@@ -105,16 +112,15 @@ nav {
 .navbar-nav > li > a {
   padding-top: 30px;
   padding-bottom: 28px;
-  &:hover  {
-    color:@c-hover;
+  &:hover {
+    color: @c-hover;
     background-color: #fff;
-    border-bottom: 2px solid @c-hover
+
   }
-  &:focus{
-    color:@c-hover;
+  &:focus {
+    color: @c-hover;
     text-decoration: none;
     background-color: #fff;
-    border-bottom: 2px solid @c-hover
   }
 }
 
@@ -124,7 +130,7 @@ nav {
 }
 
 .wrap {
-  background-color:#fff
+  background-color: #fff
 }
 
 .wrap_small {
@@ -136,32 +142,74 @@ nav {
   padding-top: 75px;
   padding-bottom: 75px
 }
-main{padding: 20px 0;background-color: #f6f7f8}
+
+main {
+  padding: 20px 0;
+  background-color: #f6f7f8
+}
+
 .banner {
   height: 498px
 }
 
-@media (min-width: 768px){
-.carousel-control .glyphicon-chevron-left{font-size:20px;width:20px;}
-  .carousel-control .glyphicon-chevron-right {font-size:20px;width:20px;} }
-@media (max-width: 768px){
-  .flex_small{display: flex;flex-direction: column-reverse}
-  nav .nav-logo {
-    margin-top:5px
+@media (min-width: 768px) {
+  .carousel-control .glyphicon-chevron-left {
+    font-size: 20px;
+    width: 20px;
   }
 
-  header{height: 52px;}
+  .carousel-control .glyphicon-chevron-right {
+    font-size: 20px;
+    width: 20px;
+  }
 }
-@media (max-width: 992px){
-  .nav-city{display: none};
 
+@media (max-width: 768px) {
+  .nav-small {
+    position: absolute;
+    width: 100%;
+    padding: 0 10%;
+    top: 50px;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .flex_small {
+    display: flex;
+    flex-direction: column-reverse
+  }
+
+  nav .nav-logo {
+    margin-top: 5px
+  }
+
+  header {
+    height: 52px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-city {
+    display: none
+  }
+
+;
 
 }
-.pd_t{padding-top: 20px;}
-.more{}
 
-.bold{font-weight:700;color:#2d3e50 }
-.spacer_wire{
+.pd_t {
+  padding-top: 20px;
+}
+
+.more {
+}
+
+.bold {
+  font-weight: 700;
+  color: #2d3e50
+}
+
+.spacer_wire {
   clear: both;
   margin: 0 auto;
   width: 70%;
@@ -169,10 +217,13 @@ main{padding: 20px 0;background-color: #f6f7f8}
   display: flex;
   flex-direction: row;
   align-items: center;
-  span:last-child{display: inline-block;
+  span:last-child {
+    display: inline-block;
 
-  height:1px;background-color: #e8e8e8}}
-
+    height: 1px;
+    background-color: #e8e8e8
+  }
+}
 
 .block_wrap {
   position: relative;
@@ -183,10 +234,67 @@ main{padding: 20px 0;background-color: #f6f7f8}
   background-color: #fff;
   padding: 20px
 }
-.rest_pd_l{padding-left:0}
-.rest_pd_r{padding-right:0}
-.text_pre{
+
+.rest_pd_l {
+  padding-left: 0
+}
+
+.rest_pd_r {
+  padding-right: 0
+}
+
+.text_pre {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.par {
+  margin-left: 15px;
+  margin-right: 15px
+}
+
+.hv {
+
+  &:hover span {
+    width: 100%
+  }
+  span {
+    display: inline-block;
+    width: 0;
+    height: 2px;
+    background: @c-hover;
+    transition: .3s;
+
+    margin: 0 auto;
+  }
+
+}
+
+.ac {
+  color: @c-hover;
+  a {
+    color: @c-hover;
+  }
+  &:hover span {
+    width: 100%
+  }
+  span {
+    width: 100%;
+    display: inline-block;
+    height: 2px;
+    background: @c-hover;
+    transition: .3s;
+  }
+}
+
+.navbar-nav > li {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.rest_pd_lr {
+  padding-left: 0;
+  padding-right: 0 !important;
 }

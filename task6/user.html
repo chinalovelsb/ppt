@@ -6,7 +6,7 @@
     <link rel=stylesheet href="css/list.css">
     <link rel=stylesheet href="css/user.css">
 </head>
-<body>
+<body data-ng-app="routerApp">
 <header>
     <b>后台管理系统</b>
     <div class="user-msg">
@@ -19,11 +19,11 @@
 <ul class="nav-left">
     <li><a href="list.html">学员列表</a></li>
     <li><a href=add.html>新增学员</a></li>
-    <li>个人信息</li>
+    <li><a data-ui-sref=".test">个人信息</a></li>
 </ul>
-<main>
+<main  data-ng-controller="userCtl">
     <p>个人信息</p>
-    <div class="wrap">
+    <div class="wrap" data-ui-view>
         <form target="_blank">
             <div class="column-1">
                 <label for="name" style="font-size:14px">登录名：</label>
@@ -33,12 +33,21 @@
                 <label for="qq" style="font-size:14px">密码：</label>
                 <input type="text" id="qq" name="qq" placeholder="请输入6-15位数字"   maxlength="15" class="att-text">
             </div>
-<input type=file>
-            <img src="../../fakepath/203124358957124457.jpg">
+            <div class="upload">
+                <input type="file" onchange="angular.element(this).scope().upLoad(this.files)">
+                <button type="button" data-ng-click="uploaded()">上传</button>
+                <dv class="file-show" id="show">
+                    <img data-ng-src="{{imageUrl}}"  alt="">
+                    <img id="after" ng-src="{{imageUrl}}" alt="本地预览">
+                    <span data-ng-bind="netUrl"></span>
+                </dv>
+
+            </div>
             <div class="btn">
                 <button type="button" id="submit" disabled>确认</button>
                 <button type="reset" class="back">取消</button>
             </div>
+
         </form>
     </div>
 

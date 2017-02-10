@@ -17,13 +17,13 @@
     </div>
 </header>
 <ul class="nav-left">
-    <li><a href="list.html">学员列表</a></li>
-    <li><a href=add.html>新增学员</a></li>
-    <li>个人信息</li>
+    <li><a data-ui-sref="list">学员列表</a></li>
+    <li><a data-ui-sref=".edit">新增学员</a></li>
+    <li><a data-ui-sref="user"> 个人信息</a></li>
 </ul>
 <main data-ng-app="routerApp" data-ng-controller="listCtl">
     <!--<span data-ui-view></span>-->
-    <div class="users">
+    <div class="users" data-ui-view>
         <p>列表管理</p>
         <div class="filter">
             <label for="type">类　型</label>
@@ -46,13 +46,13 @@
             </dl>
             <div class="detail">
                 <ul data-ng-repeat="user in userList">
-                    <li data-ng-bind="user.id "></li>
+                    <li data-ng-bind="user.id"></li>
                     <li data-ng-bind="user.name"></li>
                     <li data-ng-bind="localeData.type[user.type-1]"></li>
                     <li data-ng-bind="time(user.joinTime)"></li>
                     <li>
-                        <button type="button" class="edit">编辑</button>
-                        <button type="button" class="del">删除</button>
+                        <button type="button" class="edit" data-ng-click="edit()">编辑</button>
+                        <button type="button" class="del" data-ng-click="del()">删除</button>
                     </li>
                 </ul>
             </div>

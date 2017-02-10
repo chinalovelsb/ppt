@@ -1,22 +1,67 @@
-/**
+    /**
  * Created by Master on 2016/12/14.
  */
-var routerApp = angular.module("routerApp", ["ui.router"]);
+var routerApp = angular.module("routerApp", ["ui.router","oc.lazyLoad"]);
 routerApp.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+
+   /* $urlRouterProvider.otherwise("",'/home');*/
+    $urlRouterProvider.otherwise("",'/list');
     $stateProvider
-        .state('home', {
+
+        .state('view', {
+            url: "/list",
+            templateUrl: "view.html",
+
+        })
+        .state('listTest', {
+            url: "",
+            templateUrl: "view.html",
+
+        })
+        .state('user', {
+            url: "user",
+            templateUrl: "userTest.html",
+
+        })
+
+      /*  .state('home', {
             url: "/home",
             templateUrl: "login.html"
-        })
-        .state('list', {
-            url: "/list",
-            templateUrl: "list.html"
+        })*/
+
+        .state('edit',{
+            url:'/edit',
+            templateUrl:'addTest.html',
+            resolve:{
+                testService:['$ocLazyLoad',function ($ocLzayLoad) {
+                    return $ocLzayLoad.load(['dist/css/bootstrap.min.css' ,'dist/js/bootstrap.min.js'])
+                }]
+            }
+/*
+
         })
         .state('edit', {
             url: "/edit",
             templateUrl: "add.html"
-        });
+        })
+        .state('list.user',{
+            url:"/user",
+            templateUrl:"userTest.html",
+            controller:'userCtl',
+            resolve:{
+                testService:['$ocLazyLoad',function ($ocLzayLoad) {
+                    return $ocLzayLoad.load('css/user.css')
+                }]
+            }
+*/
+
+            }
+        )/*
+        .state('user',{
+            url:"/user",
+            templateUrl:"user.html"
+        })*/
+
 });
 /*登录页控制器*/
 routerApp.controller("loginCtl", function ($scope, $http) {
@@ -43,6 +88,7 @@ routerApp.controller("loginCtl", function ($scope, $http) {
  列表页控制器
  */
 routerApp.controller("listCtl", function ($scope, $http, $location, $rootScope, $filter) {
+
     $scope.localeData = {
         "type": ["CSS", "JS", "JAVA", "运维", "DBA", "产品", "IOS", "ANDROID"],
         "talent": ["学渣", "学霸"],
@@ -140,8 +186,76 @@ routerApp.controller("listCtl", function ($scope, $http, $location, $rootScope, 
             "level": $scope.selectLevel
         });
         $scope.request();
+    };
+    $scope.del=function () {
+        $scope.id=this.user.id;
+        $http({
+            url:"/student-ajax/students",
+            method:"post",
+            params:{id:$scope.id},
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+            .success(function(response){
+                alert(response.message);
+                $scope.request()
+
+            });
+
     }
+
 });
+
+routerApp.controller("addCtl",function ($ocLazyLoad,$scope) {
+        $ocLazyLoad.load('js/ueConfig.js');
+            $ocLazyLoad.load('../task5/UEditor/ueditor.config.js');
+            $ocLazyLoad.load('../task5/UEditor/ueditor.all.js');
+
+
+
+
+
+}
+
+
+);
+
+routerApp.controller("userCtl",function ($scope,$http,$rootScope) {
+$scope.upLoad=function (files) {
+    var fd = new FormData();
+    show=document.getElementById("after");
+    $scope.imageUrl=window.URL.createObjectURL(files[0]);
+    show.src=$scope.imageUrl;//本地预览
+    fd.append("file",files[0]);
+$rootScope.uploaded=function () {
+
+    $http.post("/jns/a/u/img/test",fd,{
+        headers:{"content-Type":undefined},
+        transformRequest:angular.identity
+    })
+        .success(function (response) {
+            if(response.message==="success")
+                $scope.imageUrl=response.data.url;
+            alert(response.message);
+            $scope.netUrl=response.data.url;
+        })
+};
+/*var reader=new FileReader();//html5 FileReader接口
+    reader.readAsDataURL(files[0]);
+    reader.onload=function () {
+        show.src=this.result
+    }*/
+
+}
+});
+
+
+
+
+
+
+
+
+/*----------------搜索过滤器------------------*/
 routerApp.filter("searched", function ($location) {
     return function (data) {
         var userData = [];
@@ -150,7 +264,7 @@ routerApp.filter("searched", function ($location) {
             var y = 0, x = 0,z = 0;
             for (var property in oBject) {//遍历属性
                 z++;
-                if (oBject[property] === data[i][property]) {//过滤搜索函数的值类型为numbe
+                if (oBject[property] == data[i][property]) {//过滤搜索函数的值类型为numbe
                     x++;                                     //刷新通过url取的值为string 全等将不能通过
                 }
                /* console.log(typeof oBject[property])

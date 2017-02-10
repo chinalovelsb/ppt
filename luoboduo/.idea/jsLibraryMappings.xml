@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/constant.js" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/html/elite.html" libraries="{angular, angular-ui-router}" />
+    <file url="file://$PROJECT_DIR$/html/findjob.html" libraries="{angular, angular-ui-router}" />
+    <file url="file://$PROJECT_DIR$/html/professionDetail.html" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/html/searchjob.html" libraries="{angular, angular-ui-router}" />
+    <file url="file://$PROJECT_DIR$/html/tpls/companyCarousel.html" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/html/tpls/navCarousel.html" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/html/tpls/options.html" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/html/tpls/professionCarousel.html" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/js/config.js" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/js/constant/constant.js" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/js/controller/controller.js" libraries="{ECMAScript 6, angular, angular-ui-router}" />
+    <file url="file://$PROJECT_DIR$/js/directive/directive.js" libraries="{angular, jquery}" />
+    <file url="file://$PROJECT_DIR$/js/filters/filters.js" libraries="{angular}" />
+    <file url="file://$PROJECT_DIR$/js/services/services.js" libraries="{angular, jquery}" />
     <file url="PROJECT" libraries="{angular-animate, angular-sanitize, ui-bootstrap-tpls}" />
   </component>
 </project>

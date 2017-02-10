@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>login</title>
     <link href="css/login.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
     <style type=text/css>
         input:-webkit-autofill {
             background-color: #fff !important;
@@ -21,7 +22,7 @@
     </div>
     <div class="pwd">
         <span></span>
-        <input type="password" id="pwd" data-placeholder="密码" data-ng-model="pwd">
+        <input type="password" id="pwd" placeholder="密码" data-ng-model="pwd">
     </div>
     <p class="msg" data-ng-bind="msg"></p>
     <button class="btn" type="button" data-ng-click="login()">登录</button>

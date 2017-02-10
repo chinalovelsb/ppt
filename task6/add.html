@@ -22,9 +22,9 @@
     <li>个人信息</li>
 </ul>
 <main>
-<div class="users">
+<div class="users" data-ng-app="routerApp" data-ng-controller="">
     <p>新增页面</p>
-    <div class="wrap">
+    <div class="wrap" data-ui-view>
         <form target="_blank">
             <div class="column-1">
                 <label for="name">姓名：</label>
@@ -76,7 +76,7 @@
             <div class="column-8" style="line-height: 16px">
                 修行立愿：
                 <div style="width: 820px;float: right">
-                    <script id="editor" ></script>
+                    <div ueditor="editor" ng-required="true" ng-model="material.content.content" id="editor"></div>
                 </div>
             </div>
             <div class="btn">
@@ -88,9 +88,10 @@
 </div>
 </main>
 <script src="js/jquery-1.10.2.min.js"></script>
-<script src="UEditor/ueditor.config.js"></script>
-<script src="UEditor/ueditor.all.js"></script>
-<script src="time/datetime.js"></script>
+<script src="../task5/UEditor/ueditor.config.js"></script>
+<script src="../task5/UEditor/ueditor.all.js"></script>
+<script src="../task5/time/datetime.js"></script>
 <script src="js/add.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <main>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 nav_bar pd-zore">
-               <a ng-class="{'cpy':'active'}[vm.chosen]"  ng-click="vm.choose('cpy')" ui-sref=".searchcompany">公司</a>
-               <a ng-class="{'job':'active'}[vm.chosen]" ng-click="vm.choose('job')" ui-sref=".searchjob">职业</a>
+            <div class="col-md-12 nav_bar pd-zore" ng-if="vm.Url">
+                <a ng-class="{'cpy':'active'}[vm.chosen]" ng-click="vm.choose('cpy')" ui-sref=".searchcompany">公司</a>
+                <a ng-class="{'job':'active'}[vm.chosen]" ng-click="vm.choose('job')" ui-sref=".searchjob">职业</a>
             </div>
             <ui-view></ui-view>
         </div>

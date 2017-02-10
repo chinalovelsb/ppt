@@ -33,7 +33,7 @@ body {
         font-size: 14px;
         line-height: 20px
     }
-
+    input[type=text]{width:90%}
     .user,
     .pwd {
         width: 80.5%;
@@ -91,6 +91,12 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
+    input[type=text]{  border: none;
+        outline-style: none;
+        height: 100%;
+        margin: auto;
+        width: 90%;
+        display: block;}
     .msg {
         position: absolute;
         top: 152px;

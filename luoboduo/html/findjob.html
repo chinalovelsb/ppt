@@ -2,51 +2,33 @@
     <div class="container">
         <div class="row nav_wrap">
             <div class="nav_job ">
-                <div class="nav_job_item" ng-repeat="items in vm.panel">
-                    <h4><span></span>{{items.class}}</h4>
-                    <ul>
-                        <li ng-repeat="item in items.data"><a ui-sref="search.searchjob({'category':items.category})">{{item.name}}</a></li>
-
-                    </ul>
-                    <div class="nav_detail">
-                         <div ng-repeat="item in items.data">
-                            <span class="item_name">{{item.name}}</span>
-                             <span  ng-repeat="child in item.data"><i ng-if="!$first" class="bdr"></i><span><a ui-sref="search.searchjob({'category':item.category,'subCategory':child.type})">{{child.name}}</a></span></span>
-
-
-                         </div>
-                    </div>
-
-                </div>
-
+                <search-panel></search-panel>
             </div>
             <div class="nav_search">
                 <form class="search_bar_wrap">
                     <div class="search_bar input-group">
                         <label class="input-group-addon">公司名字</label>
-                        <input class="form-control" type="text" ng-model="companyName">
-                        <div class=" search-btn input-group-addon " >
-                            <button type="button" ui-sref="search.searchcompany({'name':companyName})">搜索</button>
+                        <input class="form-control" type="text" ng-model="vm.companyName">
+                        <div class=" search-btn input-group-addon ">
+                            <button type="button" ui-sref="search.searchcompany({'name':vm.companyName})">搜索</button>
                         </div>
                     </div>
                 </form>
-                <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-                    <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-                        <div class="carousel_banner">
-                            <img class="img_mx_wid" ng-src="{{slide.slide.img}}" style="margin:auto;">
-                        </div>
-                    </div>
-                </div>
+                <!--导航轮播-->
+                <nav-carousel interval=5000></nav-carousel>
+                <!---->
             </div>
         </div>
 
         <div class="title">
-            <span ng-class="{true:'active'}[thisCard]" ng-click="checked(0)">推荐职位</span>
-            <span ng-class="{false:'active'}[thisCard]" ng-click="checked(1)">最新职位</span>
+            <span ng-class="{true:'active'}[vm.thisCard]" ng-click="vm.checked(1)">推荐职位</span>
+            <span ng-class="{false:'active'}[vm.thisCard]" ng-click="vm.checked(0)">最新职位</span>
         </div>
-        <div class="new_job row" ng-if="thisCard">
+        <!--推荐-->
+        <div class="new_job row" ng-if="vm.thisCard">
             <a class="pull-right" ui-sref="search.searchjob({recommend:1})">查看更多></a>
-            <div class="col-md-3 rest_pd" ng-repeat="item in professionList[0]" ui-sref='profession({id:item.id})'>
+            <div class="col-md-3 rest_pd_lr" ng-repeat="item in vm.professionList"
+                 ui-sref='professionDetail({id:item.id})'>
                 <div class="new_job_item">
                     <img class="job_item_icon img-thumbnail" ng-src="{{item.logo}}">
                     <div class="job_msg">
@@ -56,11 +38,12 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="new_job row" ng-if="!thisCard">
+        <!--最新-->
+        <div class="new_job row" ng-if="!vm.thisCard">
             <a class="pull-right" ui-sref="search.searchjob({recommend:0})">查看更多></a>
-            <div class="col-md-3 rest_pd" ng-repeat="item in professionList[1]" ui-sref='profession({id:item.id})'>
+            <div class="col-md-3 rest_pd_lr" ng-repeat="item in vm.professionList"
+                 ui-sref='professionDetail({id:item.id})'>
                 <div class="new_job_item">
                     <img class="job_item_icon img-thumbnail" ng-src="{{item.logo}}">
                     <div class="job_msg">
@@ -73,66 +56,35 @@
 
         </div>
         <div class="title">
-            <h4>推荐公司</h4>
+            <h5><b>推荐公司</b></h5>
             <a class="pull-right" ui-sref="search.searchcompany({recommend:1})">查看更多></a>
         </div>
         <div class="new_company row">
-            <div class="new_company_list row">
-                <div class="col-md-4 rest_pd">
+            <div class="new_company_list row" ng-if="vm.industryImg">
+                <div class="col-md-4 rest_pd_lr" ui-sref="companyDetail({id:vm.industryImg.id})">
                     <div class="new_company_first"
-                         style="background: url('{{imgUrl}}')no-repeat center;background-size: cover">
-                        <span>{{companyNEW.name}}</span>
-                        <span>{{companyNEW.slogan}}</span>
+                         style="background: url('{{vm.industryImg.industryImg}}')no-repeat center;background-size: cover">
+                        <span>{{vm.industryImg.name}}</span>
+                        <span>{{vm.industryImg.slogan}}</span>
                         <div class="company_info">
-                            <span>移动互联网</span>
-                            <span>上市</span>
-                            <span>{{companyNewCity}}</span>
+                            <span>{{(vm.industryImg|industry)[0]}}</span>
+                            <span>{{vm.industryImg|financingtype}}</span>
+                            <span>{{vm.industryImg|city}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2  rest_pd" ng-repeat="item in companyList" ui-sref="company({id:item.id})">
+                <div class="col-md-2  rest_pd_lr" ng-repeat="item in vm.companyList"
+                     ui-sref="companyDetail({id:item.id})">
                     <div class="new_company_item ">
                         <img class="company_item_icon" ng-src="{{item.logo}}">
                     </div>
                 </div>
             </div>
-            <div ng-controller="jobListCarousel">
 
-                <div class="company_carousel row" uib-carousel active="active" interval="jobInterval" no-wrap="noWrapSlides" >
-
-                <div class="company_carousel_wrap col-md-12" uib-slide ng-repeat="slide in jobList track by slide.id" index="slide.id" style="width:95.7%" ui-sref="company({id:slide.slide.id})">
-
-                    <div class="col-md-7 col-xs-7 rest_pd company_msg" >
-                        <div  class="company_carousel_logo ">
-                            <img  ng-src="{{slide.slide.logo}}">
-                        </div>
-
-                        <div class="company_carousel_info">
-                            <p><b>{{slide.slide.name}}</b></p>
-                            <p class="text_pre">{{slide.slide.slogan}}</p>
-                           <div>
-                               <span class="tag" ng-repeat="industry in slide.slide.industryList|industry">{{industry}}</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-xs-5 company_carousel_job_wrap">
-                    <div class="company_carousel_job">
-                        <p><b>正在热招</b></p>
-                        <p class="company_carousel_list">
-                            <span class="company_job_tag" ng-repeat="profeession in slide.slide.professionList">{{profeession}}</span>
-
-                        </p>
-                    </div>
-
-
-
-
-                    </div>
-                </div>
-
-                </div>
-            </div>
-            </div>
+            <!--在招职位轮播-->
+            <company-carousel vertical='true'></company-carousel>
+            <!---->
+        </div>
 
 
         <div class="block_wrap row text-center">
@@ -154,7 +106,6 @@
 
             <div class="wrap_small_pd row flex_small">
 
-
                 <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-1 text_big_align">
                     <h3>0预付，无风险</h3>
                     <h4>入职付一半，转正付一半</h4>
@@ -175,7 +126,7 @@
 
     </div>
 
-        </div>
+    </div>
 
 
 </main>

@@ -7,11 +7,20 @@
     height: 40px;
     line-height: 40px;
     border-left: 5px solid transparent;
+    transition: .3s;
+    cursor: pointer;
     &:hover {
-      border-left: 5px solid #fc2b47;
-      background-color: #f6f7f8
+      color: #fc2b47;
+      .aboutus {
+        background: url("../images/IconCollection.png")no-repeat -5px -8px
+      }
+    ;
+      .contactus {
+        padding-left: 20px;
+        background: url("../images/IconCollection.png")no-repeat -53px -8px
+      }
     }
-  ;
+
     & > img {
       vertical-align: sub;
       margin-right: 8px
@@ -20,6 +29,7 @@
 }
 
 .about_content {
+
   background-color: #fff;
   padding: 40px 75px;
   height: 610px;
@@ -34,3 +44,69 @@
   margin: 40px 0;
   padding-left: 7px;
 }
+
+.cpy-name {
+
+  text-align: left;
+  font-weight: 700;
+  font-size: 16px;
+  text-indent: 0;
+  margin: 2em 0;
+  color: #2b3d51;
+
+}
+
+.about-active {
+  border-left: 5px solid #fc2b47 !important;
+  background-color: #f6f7f8;
+  transition: .3s;
+  color: #fc2b47;
+  .aboutus {
+    background: url("../images/IconCollection.png")no-repeat -5px -8px
+  }
+;
+  .contactus {
+    padding-left: 20px;
+    background: url("../images/IconCollection.png")no-repeat -53px -8px
+  }
+}
+
+.cpy > p {
+  margin-left: 0;
+  margin-bottom: 20px;
+
+}
+
+.cpy > p:nth-child(2) {
+  background: url("../images/phone.png") no-repeat 15px;
+  padding-left: 35px;
+}
+
+.cpy > p:nth-child(3) {
+  background: url("../images/about-url.png") no-repeat 15px;
+  padding-left: 35px;
+}
+
+.cpy > p:nth-child(4) {
+  background: url("../images/email.png") no-repeat 15px;
+  padding-left: 35px;
+}
+
+.cpy > p:nth-child(5) {
+  background: url("../images/location (1).png") no-repeat 15px;
+  padding-left: 35px;
+}
+
+.aboutus {
+  transition: .6s;
+  padding-left: 20px;
+  background: url("../images/IconCollection.png")no-repeat -29px -8px
+}
+
+.contactus {
+  transition: .6s;
+  padding-left: 20px;
+  background: url("../images/IconCollection.png")no-repeat -78px -8px
+}
+
+;

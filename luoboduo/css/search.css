@@ -34,7 +34,6 @@ ul {
 nav > ul > li {
   height: 80px;
   float: left;
-  border-bottom: 2px solid #eb5255;
 }
 footer {
   margin-top: 20px;
@@ -96,13 +95,11 @@ nav .nav-logo {
 .navbar-nav > li > a:hover {
   color: #eb5255;
   background-color: #fff;
-  border-bottom: 2px solid #eb5255;
 }
 .navbar-nav > li > a:focus {
   color: #eb5255;
   text-decoration: none;
   background-color: #fff;
-  border-bottom: 2px solid #eb5255;
 }
 .position_self {
   position: relative;
@@ -137,6 +134,14 @@ main {
   }
 }
 @media (max-width: 768px) {
+  .nav-small {
+    position: absolute;
+    width: 100%;
+    padding: 0 10%;
+    top: 50px;
+    background-color: #fff;
+    text-align: center;
+  }
   .flex_small {
     display: flex;
     flex-direction: column-reverse;
@@ -194,6 +199,45 @@ main {
   white-space: nowrap;
   overflow: hidden;
 }
+.par {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.hv:hover span {
+  width: 100%;
+}
+.hv span {
+  display: inline-block;
+  width: 0;
+  height: 2px;
+  background: #eb5255;
+  transition: .3s;
+  margin: 0 auto;
+}
+.ac {
+  color: #eb5255;
+}
+.ac a {
+  color: #eb5255;
+}
+.ac:hover span {
+  width: 100%;
+}
+.ac span {
+  width: 100%;
+  display: inline-block;
+  height: 2px;
+  background: #eb5255;
+  transition: .3s;
+}
+.navbar-nav > li {
+  display: flex;
+  flex-direction: column;
+}
+.rest_pd_lr {
+  padding-left: 0;
+  padding-right: 0 !important;
+}
 a:hover {
   text-decoration: none;
 }
@@ -214,7 +258,7 @@ a:hover {
 }
 .nav_search .search_bar_wrap {
   position: absolute;
-  z-index: 999;
+  z-index: 2;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   padding: 13px;
@@ -377,10 +421,10 @@ a:hover {
   background-color: #fff;
   color: #eb5255;
   /* .nav_detail{
-      width:775px;
-      transition: 0.3s;
+       width:775px;
+       transition: 0.3s;
 
-    }*/
+     }*/
 }
 .new_job {
   min-height: 336px;
@@ -422,8 +466,8 @@ a:hover {
   cursor: pointer;
 }
 .new_job_item > img {
-  max-width: 108px;
-  max-height: 108px;
+  width: 108px;
+  height: 108px;
 }
 .job_msg {
   overflow: hidden;
@@ -449,6 +493,7 @@ a:hover {
   cursor: pointer;
 }
 .new_company_first {
+  cursor: pointer;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
@@ -810,12 +855,12 @@ a:hover {
   font-size: 20px;
 }
 .nav_search .carousel-control.left {
-  left: 60px  ;
+  left: 60px;
   background-image: none;
   background-color: #fff;
 }
 .nav_search .carousel-control.right {
-  right: 60px ;
+  right: 60px;
   background-image: none;
   background-color: #fff;
 }
@@ -838,16 +883,36 @@ a:hover {
   font-size: 20px;
 }
 .company_carousel .carousel-control.left {
-  left: 60px  ;
+  left: 60px;
   background-image: none;
   background-color: #fff;
 }
 .company_carousel .carousel-control.right {
-  right: 60px ;
+  right: 60px;
   background-image: none;
   background-color: #fff;
 }
+@media (min-width: 768px) {
+  .nofound {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 320px;
+  }
+}
 @media (max-width: 768px) {
+  .msg-404,
+  .msg-404-2,
+  .nofound,
+  .img-404 {
+    text-align: center !important;
+  }
+  .nofound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 320px;
+  }
   .flex_small {
     display: flex;
     flex-direction: column-reverse;
@@ -889,44 +954,44 @@ a:hover {
   }
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
-  .company_carousel .carousel-inner > .item {
+  .vertical-carousel .carousel-inner > .item {
     -webkit-transition: -webkit-transform 0.6s ease-in-out;
     -o-transition: -o-transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
-  .company_carousel .carousel-inner > .item.next,
-  .company_carousel .carousel-inner > .item.active.right {
+  .vertical-carousel .carousel-inner > .item.next,
+  .vertical-carousel .carousel-inner > .item.active.right {
     left: 0;
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
-  .company_carousel .carousel-inner > .item.prev,
-  .company_carousel .carousel-inner > .item.active.left {
+  .vertical-carousel .carousel-inner > .item.prev,
+  .vertical-carousel .carousel-inner > .item.active.left {
     left: 0;
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
   }
-  .company_carousel .carousel-inner > .item.next.left,
-  .company_carousel .carousel-inner > .item.prev.right,
-  .company_carousel .carousel-inner > .item.active {
+  .vertical-carousel .carousel-inner > .item.next.left,
+  .vertical-carousel .carousel-inner > .item.prev.right,
+  .vertical-carousel .carousel-inner > .item.active {
     left: 0;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
-  .company_carousel .carousel-indicators li {
+  .vertical-carousel .carousel-indicators li {
     width: 18px;
     height: 18px;
     border: 1px solid #ccc;
     display: block;
   }
-  .company_carousel .carousel-indicators li.active {
+  .vertical-carousel .carousel-indicators li.active {
     background-color: #eb5255;
     width: 20px;
     height: 20px;
   }
-  .company_carousel .carousel-indicators {
+  .vertical-carousel .carousel-indicators {
     left: 97%;
     width: 20px;
     height: 130px;
@@ -935,10 +1000,10 @@ a:hover {
     justify-content: space-around;
     margin-left: 0;
   }
-  .company_carousel .carousel-control {
+  .vertical-carousel .carousel-control {
     display: none;
   }
-  .company_carousel .carousel-inner {
+  .vertical-carousel .carousel-inner {
     height: 140px;
   }
 }
@@ -1084,6 +1149,33 @@ a:hover {
 .company .company_intro_tag .tag {
   margin: 0;
   margin-bottom: 20px;
+}
+.nofound {
+  padding: 40px 0;
+}
+.msg-404 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2b3d51;
+  margin-bottom: 15px;
+}
+.msg-404-2 {
+  font-size: 17px;
+  color: #536a82;
+}
+.img-404 {
+  text-align: right;
+}
+.recommend {
+  margin-top: 1px;
+}
+.new_job_item:hover,
+.new_company_item:hover,
+.job_list:hover,
+.company_item:hover {
+  cursor: pointer;
+  box-shadow: 0 0 7px #DAE0E3;
+  border: solid 1px #f5f5f5;
 }
 .bd-right {
   border-right: 1px solid #e8e8e8;
@@ -1258,6 +1350,7 @@ a:hover {
 .search_tab a {
   height: 25px;
   padding: 0 13px;
+  margin-right: 5px;
   line-height: 25px;
   display: inline-block;
   cursor: pointer;

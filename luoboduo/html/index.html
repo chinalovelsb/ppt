@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +8,17 @@
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/base.css">
-
+    <style type=text/css>
+        .actived {
+            color: #eb5255;
+            background-color: #fff;
+            border-bottom: 2px solid #eb5255;
+        }
+    </style>
 </head>
 <body ng-app="app">
-<header class="position_self">
-    <nav class="container" role="navigation" >
+<header class="position_self" ng-controller="BarController">
+    <nav class="container" role="navigation">
         <div class="row">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
                     data-target="#example-navbar-collapse">
@@ -30,12 +36,21 @@
                     <span>北京站</span>
                 </div>
             </div>
-            <div class="collapse navbar-collapse pull-right" id="example-navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a ui-sref="home">首页</a></li>
-                    <li><a ui-sref="job">找职位</a></li>
-                    <li><a ui-sref="elite" >找精英</a></li>
-                    <li><a ui-sref="about">关于我们</a></li>
+            <div class="nav-small collapse navbar-collapse pull-right " id="example-navbar-collapse">
+                <ul class="nav navbar-nav ">
+                    <li></li>
+                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/home')]"><a
+                            style="padding-left: 0;padding-right: 0" ui-sref="home"
+                            ng-click="url('/home')">首页</a><span></span></li>
+                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/job')]"><a
+                            style="padding-left: 0;padding-right: 0" ui-sref="job"
+                            ng-click="url('/job')">找职位</a><span></span></li>
+                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/elite')]"><a
+                            style="padding-left: 0;padding-right: 0" ui-sref="elite"
+                            ng-click="url('/elite')">找精英</a><span></span></li>
+                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/about')]"><a
+                            style="padding-left: 0;padding-right: 0" ui-sref="about"
+                            ng-click="url('/about')">关于我们</a><span></span></li>
                 </ul>
             </div>
         </div>
@@ -82,12 +97,14 @@
 <script src="//cdn.bootcss.com/angular-ui-bootstrap/2.4.0/ui-bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/angular-ui-bootstrap/2.4.0/ui-bootstrap-tpls.min.js"></script>
 -->
+
+
 <script src="../dist/js/bootstrap.min.js"></script>
 <script src="../js/config.js"></script>
+<script src="../js/directive/directive.js"></script>
 <script src="../js/constant/constant.js"></script>
 <script src="../js/controller/controller.js"></script>
 <script src="../js/filters/filters.js"></script>
 <script src="../js/services/services.js"></script>
-<script src="../js/directive/directive.js"></script>
 </body>
 </html>

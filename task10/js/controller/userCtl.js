@@ -11,7 +11,7 @@ angular.module('routerApp')
             fd.append("file", files[0]);
             $rootScope.uploaded = function () {
 
-                $http.post("/jns/a/u/img/test", fd, {
+                $http.post("/lbd-admin/a/u/img/test", fd, {
                     headers: {"content-Type": undefined},
                     transformRequest: angular.identity
                 })

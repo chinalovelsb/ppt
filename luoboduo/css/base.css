@@ -34,7 +34,6 @@ ul {
 nav > ul > li {
   height: 80px;
   float: left;
-  border-bottom: 2px solid #eb5255;
 }
 footer {
   margin-top: 20px;
@@ -96,13 +95,11 @@ nav .nav-logo {
 .navbar-nav > li > a:hover {
   color: #eb5255;
   background-color: #fff;
-  border-bottom: 2px solid #eb5255;
 }
 .navbar-nav > li > a:focus {
   color: #eb5255;
   text-decoration: none;
   background-color: #fff;
-  border-bottom: 2px solid #eb5255;
 }
 .position_self {
   position: relative;
@@ -137,6 +134,14 @@ main {
   }
 }
 @media (max-width: 768px) {
+  .nav-small {
+    position: absolute;
+    width: 100%;
+    padding: 0 10%;
+    top: 50px;
+    background-color: #fff;
+    text-align: center;
+  }
   .flex_small {
     display: flex;
     flex-direction: column-reverse;
@@ -193,4 +198,43 @@ main {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+.par {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.hv:hover span {
+  width: 100%;
+}
+.hv span {
+  display: inline-block;
+  width: 0;
+  height: 2px;
+  background: #eb5255;
+  transition: .3s;
+  margin: 0 auto;
+}
+.ac {
+  color: #eb5255;
+}
+.ac a {
+  color: #eb5255;
+}
+.ac:hover span {
+  width: 100%;
+}
+.ac span {
+  width: 100%;
+  display: inline-block;
+  height: 2px;
+  background: #eb5255;
+  transition: .3s;
+}
+.navbar-nav > li {
+  display: flex;
+  flex-direction: column;
+}
+.rest_pd_lr {
+  padding-left: 0;
+  padding-right: 0 !important;
 }

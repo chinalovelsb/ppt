@@ -1,7 +1,7 @@
 /**
  * Created by Master on 2017/1/5.
  */
-var app = angular.module('app', ['ui.router', 'oc.lazyLoad','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var app = angular.module('app', ['ui.router', 'oc.lazyLoad', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ui.bootstrap.carousel']);
 app.config(function ($stateProvider, $urlRouterProvider) {
     /*
      $locationProvider.html5Mode(true);
@@ -12,19 +12,22 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('home', {
                 url: '/home',
                 templateUrl: 'home.html',
-                controller:'CarouselDemoCtrl',
-            resolve:{
-                    loadFile:['$ocLazyLoad',function($ocLazyLoad){
-             return $ocLazyLoad.load(['../css/first.css','../js/controller/controller.js'])
-            }]
+                controller: 'FirstController',
+                resolve: {
+                    loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['../css/first.css', '../js/controller/controller.js'])
+                    }]
 
-            }
+                }
 
             }
         )
+
         .state('elite', {
             url: '/elite',
             templateUrl: 'elite.html',
+            controller: 'EliteController',
+            controllerAs: 'vm',
             resolve: {
                 loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('../css/elite.css')
@@ -35,11 +38,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('job', {
             url: '/job',
             templateUrl: 'findjob.html',
-            controller:'findProfession',
-            controllerAs:'vm',
-          /*  params:{'name':null},*/
+            controller: 'FindProfessionController',
+            controllerAs: 'vm',
+            /*  params:{'name':null},*/
             resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('../css/findjob.css')
 
                 }]
@@ -49,111 +52,103 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('about', {
             url: '/about',
             templateUrl: 'about.html',
+            controller: 'AboutController',
+            controllerAs: 'vm',
             resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('../css/about.css')
 
                 }]
             }
         })
-        .state('list', {
-            url: '/list',
-            templateUrl: 'newjob.html',
-            controller:'SearchJobController',
-            controllerAs:'vm',
-            params:{'recommend':null,'name':null},
+        .state('companyDetail', {
+            url: '/companyDetail',
+            templateUrl: 'companyDetail.html',
+            controller: 'CompanyDetailController',
+            controllerAs: 'vm',
+            params: {'id': null},
             resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(['../css/findjob.css', '../js/controller/controller.js'])
+
+                }]
+            }
+
+        })
+        .state('companyDetail.companyJob', {
+            url: '/companyJob',
+            templateUrl: 'companyJob.html',
+            controllerAs: 'vm',
+            params: {'id': null},
+            controller: 'CompanyDetailController',
+            resolve: {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(['../css/findjob.css', '../js/controller/controller.js'])
+
+                }]
+            }
+
+        })
+
+        .state('professionDetail', {
+            url: '/professionDetail',
+            params: {'id': null},
+            templateUrl: 'professionDetail.html',
+            controllerAs: 'vm',
+            controller: 'ProfessionDetailCtrl',
+            resolve: {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load(['../css/findjob.css'])
 
                 }]
             }
         })
-        .state('company',{
-            url:'/company',
-            templateUrl:'company.html',
-            controller:'CompanyDetail',
-            params:{'id':null},
+        .state('search', {
+            url: '/job/search',
+            params: {'id': null},
+            templateUrl: 'search.html',
+            controller: 'SearchController',
+            controllerAs: 'vm',
             resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(['../css/findjob.css','../js/controller/controller.js'])
-
-                }]
-            }
-
-        })
-        .state('company.companyJob',{
-            url:'/companyJob',
-            templateUrl:'companyJob.html',
-            params:{'id':null},
-            controller:'CompanyDetail',
-            resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(['../css/findjob.css','../js/controller/controller.js'])
-
-                }]
-            }
-
-        })
-        .state('company.companyInfo',{
-            url:'/companyInfo',
-            templateUrl:'companyInfo.html',
-            params:{'id':null},
-            controller:'CompanyDetail',
-            resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(['../css/findjob.css','../js/controller/controller.js'])
-
-                }]
-            }
-
-        })
-        .state('profession',{
-            url:'/profession',
-            params:{'id':null},
-            templateUrl:'profession.html',
-            controller:'ProfessionDetailCtrl',
-            resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(['../css/findjob.css'])
-
-                }]
-            }
-        })
-         .state('search',{
-            url:'/search',
-            params:{'id':null},
-            templateUrl:'search.html',
-            controller:'SearchController',
-             controllerAs:'vm',
-            resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load(['../css/search.css'])
 
                 }]
             }
         })
-         .state('search.searchcompany',{
-            url:'/searchcompany',
-            params:{'name':null},
-            templateUrl:'searchcompany.html',
-            controller:'SearchCompanyController',
-            controllerAs:'vm',
+        .state('search.searchcompany', {
+            url: '/searchcompany',
+            params: {'name': null},
+            templateUrl: 'searchcompany.html',
+            controller: 'SearchCompanyController',
+            controllerAs: 'vm',
             resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load(['../css/search.css'])
+                }]
+            }
+        })
+        .state('search.companyList', {
+            url: '/companyList',
+            params: {'name': null},
+            templateUrl: 'searchcompany.html',
+            controller: 'SearchCompanyController',
+            controllerAs: 'vm',
+            resolve: {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(['../css/search.css', '../css/elite.css'])
 
                 }]
             }
         })
-         .state('search.searchjob',{
-            url:'/searchjob',
-            params:{'id':null,'recommend':null,'category':null,'subCategory':null},
-            templateUrl:'searchjob.html',
-            controller:'SearchJobController',
-            controllerAs:'vm',
+        .state('search.searchjob', {
+            url: '/searchjob',
+            params: {'id': null, 'recommend': null, 'category': null, 'subCategory': null},
+            templateUrl: 'searchjob.html',
+            controller: 'SearchJobController',
+            controllerAs: 'vm',
             resolve: {
-                loadFile:['$ocLazyLoad',function ($ocLazyLoad) {
+                loadFile: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load(['../css/search.css'])
 
                 }]

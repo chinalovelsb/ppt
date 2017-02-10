@@ -1,3 +1,7 @@
+.company_page {
+  padding: 20px 0;
+  background-color: #f6f7f8;
+}
 .success_case {
   height: 178px;
   width: 258px;
@@ -13,7 +17,7 @@
 .advantage {
   height: 178px;
   width: 258px;
-  text-align: center  ;
+  text-align: center;
   border-radius: 5px;
   margin: 0 auto;
 }
@@ -65,4 +69,8 @@
 .wrap_small_pd {
   padding-top: 75px;
   padding-bottom: 75px;
+}
+.flex_mid {
+  display: flex;
+  align-items: center;
 }
