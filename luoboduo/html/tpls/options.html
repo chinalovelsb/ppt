@@ -1,0 +1,5 @@
+<div class="form-group">
+    <label>{{labelName}}：</label>
+    <a ng-class="{'active':checkBox?(valueArr|hasInArr:option.type):option.type===selectValue}"
+       ng-click="choose(option.type)" ng-repeat="option in options">{{option.name}}</a>
+</div>

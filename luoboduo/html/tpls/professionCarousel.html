@@ -1,0 +1,15 @@
+<div>
+    <div uib-carousel active="active" interval="Interval" no-wrap="noWrapSlides" class="row">
+        <div uib-slide ng-repeat="slide in slides track by $index" index="$index" style="width:100%">
+            <div class=" col-md-3" ng-repeat="item in slide" ui-sref="professionDetail({id:item.id})">
+                <div class="carousel_item">
+                    <div class="carousel_logo">
+                        <img ng-src="{{item.logo}}" style="margin:auto;">
+                    </div>
+                    <p><b>{{item.name}}</b><span></span></p>
+                    <p>{{item.companyName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

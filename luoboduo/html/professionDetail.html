@@ -1,0 +1,62 @@
+<main>
+    <div class="container">
+        <div class="row profession">
+            <div class="col-md-8 rest_pd profession_card">
+                <div class="profession_name" ng-if="vm.profession">
+                    <p>{{vm.profession.name}}</p>
+                    <span class="">{{vm.profession.companyName}}</span>
+                    <div class="requirements">
+                        <span>{{vm.profession|compensation}}</span>
+                        <span>{{vm.city}}</span>
+                        <span>{{vm.profession|education}}</span>
+                        <span>{{vm.profession|experience}}</span>
+                    </div>
+                    <ul>
+                        <li class="tag" ng-repeat="tag in vm.profession.companyTags">{{tag.companyTag}}</li>
+                    </ul>
+                    <span class="updateTime">发布时间：{{vm.profession.updateAt|timestamp}}</span>
+                </div>
+                <div class="profession_detail">
+                    <h4>职位描述</h4>
+                </div>
+                <p>岗位职责：</p>
+                <p>{{vm.profession.responsibility}}</p>
+                <br>
+                <p>必备条件：</p>
+                <p>{{vm.profession.requisite}}</p>
+                <br>
+                <p>公司福利：</p>
+                <p>{{vm.profession.boon}}</p>
+
+            </div>
+            <div class="col-md-4 rest_pd">
+                <div class="company_logo text-center">
+                    <img class="img-thumbnail" ng-src="{{vm.profession.logo}}">
+                </div>
+                <p class="text-center pd_t bold">{{vm.profession.productName||vm.profession.companyName}}</p>
+                <div class='spacer_wire '>
+                    <span class="col-md-4 col-xs-4 rest_pd_l">基本信息</span>
+                    <span class="col-md-8 col-xs-8"></span>
+                </div>
+                <div class=" company_intro">
+                    <p class="user_icon">{{vm.profession.totalNum}}</p>
+                    <p class="company_type_icon">
+                        <span ng-repeat="type in vm.profession.industryList|industry">{{type}}<span
+                                ng-if="!$last">/</span></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-8 rest_pd_l  ">
+                <div class="profession_footer">
+                    <div>
+                        <a>分享</a>
+                        <a></a>
+                        <a></a>
+                        <a></a>
+                    </div>
+                    <button type=button class="btn btn-danger pull-right">我感兴趣</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

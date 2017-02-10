@@ -1,0 +1,15 @@
+<div class="nav_job_item" ng-repeat="items in panel">
+    <h4><span></span>{{items.class}}</h4>
+    <ul>
+        <li ng-repeat="item in items.data"><a ui-sref="search.searchjob({'category':item.category})">{{item.name}}</a>
+        </li>
+
+    </ul>
+    <div class="nav_detail">
+        <div ng-repeat="item in items.data">
+            <span class="item_name">{{item.name}}</span>
+            <span ng-repeat="child in item.data"><i ng-if="!$first" class="bdr"></i><span><a
+                    ui-sref="search.searchjob({'category':item.category,'subCategory':child.type})">{{child.name}}</a></span></span>
+        </div>
+    </div>
+</div>

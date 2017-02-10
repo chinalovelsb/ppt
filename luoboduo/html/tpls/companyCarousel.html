@@ -1,0 +1,31 @@
+<div ng-class="{'vertical-carousel':vertical}">
+    <div class="company_carousel row" uib-carousel active="active" interval="Interval"
+         no-wrap="noWrapSlides">
+        <div class="company_carousel_wrap col-md-12" uib-slide
+             ng-repeat="slide in slides track by $index" index="$index" style="width:95.7%"
+             ui-sref="companyDetail({id:slide.id})">
+            <div class="col-md-7 col-xs-7 rest_pd company_msg">
+                <div class="company_carousel_logo ">
+                    <img ng-src="{{slide.logo}}">
+                </div>
+                <div class="company_carousel_info">
+                    <p><b>{{slide.name}}</b></p>
+                    <p class="text_pre">{{slide.slogan}}</p>
+                    <div>
+                        <span class="tag" ng-repeat="industry in slide.industryList|industry">{{industry}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-xs-5 company_carousel_job_wrap">
+                <div class="company_carousel_job">
+                    <p><b>正在热招</b></p>
+                    <p class="company_carousel_list">
+                        <span class="company_job_tag"
+                              ng-repeat="profeession in slide.professionList">{{profeession}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

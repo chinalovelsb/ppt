@@ -1,0 +1,10 @@
+<div>
+    <div uib-carousel active="active" interval=Interval no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides track by $index" index="$index">
+            <div class="carousel_banner">
+                <img class="img_mx_wid" ng-src="{{slide.img}}" style="margin:auto;">
+            </div>
+        </div>
+    </div>
+</div>
+
