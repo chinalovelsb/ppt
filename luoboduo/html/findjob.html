@@ -1,133 +1,136 @@
 <main class="pd_t">
-    <div class="container">
-        <div class="row nav_wrap">
-            <div class="nav_job ">
-                <search-panel></search-panel>
+    <div class="container" ui-view=>
+        <div>
+            <div class="row nav_wrap">
+                <div class="nav_job hidden-sm hidden-xs ">
+                    <search-panel></search-panel>
+                </div>
+                <div class="nav_search">
+                    <form class="search_bar_wrap">
+                        <div class="search_bar input-group">
+                            <label class="input-group-addon hidden-xs">公司名字</label>
+                            <input class="form-control" type="text" placeholder="请输入公司名称" ng-model="vm.companyName">
+                            <div class=" search-btn input-group-addon ">
+                                <button type="button" ui-sref="job.search.searchcompany({'name':vm.companyName})">搜索
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--导航轮播-->
+                    <nav-carousel interval=5000></nav-carousel>
+                    <!---->
+                </div>
             </div>
-            <div class="nav_search">
-                <form class="search_bar_wrap">
-                    <div class="search_bar input-group">
-                        <label class="input-group-addon">公司名字</label>
-                        <input class="form-control" type="text" ng-model="vm.companyName">
-                        <div class=" search-btn input-group-addon ">
-                            <button type="button" ui-sref="search.searchcompany({'name':vm.companyName})">搜索</button>
+
+            <div class="title">
+                <span ng-class="{true:'active'}[vm.thisCard]" ng-click="vm.checked(1)">推荐职位</span>
+                <span ng-class="{false:'active'}[vm.thisCard]" ng-click="vm.checked(0)">最新职位</span>
+            </div>
+            <!--推荐-->
+            <div class="new_job row" ng-if="vm.thisCard">
+                <a class="pull-right" ui-sref="job.search.searchjob({recommend:1})">查看更多></a>
+                <div class="col-md-3 rest_pd_lr" ng-repeat="item in vm.professionList"
+                     ui-sref='job.professionDetail({id:item.id})'>
+                    <div class="new_job_item">
+                        <img class="job_item_icon img-thumbnail" ng-src="{{item.logo}}">
+                        <div class="job_msg">
+                            <p>{{item|compensation}}</p>
+                            <p>{{item.name}}</p>
+                            <p>{{item.companyName}}</p>
                         </div>
                     </div>
-                </form>
-                <!--导航轮播-->
-                <nav-carousel interval=5000></nav-carousel>
+                </div>
+            </div>
+            <!--最新-->
+            <div class="new_job row" ng-if="!vm.thisCard">
+                <a class="pull-right" ui-sref="job.search.searchjob({recommend:0})">查看更多></a>
+                <div class="col-md-3 rest_pd_lr" ng-repeat="item in vm.professionList"
+                     ui-sref='job.professionDetail({id:item.id})'>
+                    <div class="new_job_item">
+                        <img class="job_item_icon img-thumbnail" ng-src="{{item.logo}}">
+                        <div class="job_msg">
+                            <p>6k-10k</p>
+                            <p>{{item.name}}</p>
+                            <p>{{item.companyName}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="title">
+                <h5><b>推荐公司</b></h5>
+                <a class="pull-right" ui-sref="job.search.searchcompany({recommend:1})">查看更多></a>
+            </div>
+            <div class="new_company row">
+                <div class="new_company_list row">
+                    <div class="col-md-4 rest_pd_lr" ui-sref="job.companyDetail({id:vm.industryImg.id})"
+                         ng-if="vm.industryImg">
+                        <div class="new_company_first"
+                             style="background: url('{{vm.industryImg.industryImg}}')no-repeat center;background-size: cover">
+                            <span>{{vm.industryImg.name}}</span>
+                            <span>{{vm.industryImg.slogan}}</span>
+                            <div class="company_info">
+                                <span>{{(vm.industryImg|industry)[0]}}</span>
+                                <span>{{vm.industryImg|financingtype}}</span>
+                                <span>{{vm.industryImg|city}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2  rest_pd_lr" ng-repeat="item in vm.companyList"
+                         ui-sref="job.companyDetail({id:item.id})">
+                        <div class="new_company_item ">
+                            <img class="company_item_icon" ng-src="{{item.logo}}">
+                        </div>
+                    </div>
+                </div>
+
+                <!--在招职位轮播-->
+                <company-carousel vertical='true'></company-carousel>
                 <!---->
             </div>
-        </div>
 
-        <div class="title">
-            <span ng-class="{true:'active'}[vm.thisCard]" ng-click="vm.checked(1)">推荐职位</span>
-            <span ng-class="{false:'active'}[vm.thisCard]" ng-click="vm.checked(0)">最新职位</span>
-        </div>
-        <!--推荐-->
-        <div class="new_job row" ng-if="vm.thisCard">
-            <a class="pull-right" ui-sref="search.searchjob({recommend:1})">查看更多></a>
-            <div class="col-md-3 rest_pd_lr" ng-repeat="item in vm.professionList"
-                 ui-sref='professionDetail({id:item.id})'>
-                <div class="new_job_item">
-                    <img class="job_item_icon img-thumbnail" ng-src="{{item.logo}}">
-                    <div class="job_msg">
-                        <p>{{item|compensation}}</p>
-                        <p>{{item.name}}</p>
-                        <p>{{item.companyName}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--最新-->
-        <div class="new_job row" ng-if="!vm.thisCard">
-            <a class="pull-right" ui-sref="search.searchjob({recommend:0})">查看更多></a>
-            <div class="col-md-3 rest_pd_lr" ng-repeat="item in vm.professionList"
-                 ui-sref='professionDetail({id:item.id})'>
-                <div class="new_job_item">
-                    <img class="job_item_icon img-thumbnail" ng-src="{{item.logo}}">
-                    <div class="job_msg">
-                        <p>6k-10k</p>
-                        <p>{{item.name}}</p>
-                        <p>{{item.companyName}}</p>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-        <div class="title">
-            <h5><b>推荐公司</b></h5>
-            <a class="pull-right" ui-sref="search.searchcompany({recommend:1})">查看更多></a>
-        </div>
-        <div class="new_company row">
-            <div class="new_company_list row" ng-if="vm.industryImg">
-                <div class="col-md-4 rest_pd_lr" ui-sref="companyDetail({id:vm.industryImg.id})">
-                    <div class="new_company_first"
-                         style="background: url('{{vm.industryImg.industryImg}}')no-repeat center;background-size: cover">
-                        <span>{{vm.industryImg.name}}</span>
-                        <span>{{vm.industryImg.slogan}}</span>
-                        <div class="company_info">
-                            <span>{{(vm.industryImg|industry)[0]}}</span>
-                            <span>{{vm.industryImg|financingtype}}</span>
-                            <span>{{vm.industryImg|city}}</span>
-                        </div>
+            <div class="block_wrap row text-center">
+
+                <div class="wrap_small_pd row ">
+                    <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-2">
+                        <img class="img_mx_wid" src="../images/findjob1.png">
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-1 text_big_align">
+                        <h3>0预付，无风险</h3>
+                        <h4>入职付一半，转正付一半</h4>
+                        <p>普通猎头是三个月的薪水。非一般的我们只
+                            收一个月的薪水。如果试用期不通过，免费
+                            推荐另一个</p>
                     </div>
                 </div>
-                <div class="col-md-2  rest_pd_lr" ng-repeat="item in vm.companyList"
-                     ui-sref="companyDetail({id:item.id})">
-                    <div class="new_company_item ">
-                        <img class="company_item_icon" ng-src="{{item.logo}}">
+
+
+                <div class="wrap_small_pd row flex_small">
+
+                    <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-1 text_big_align">
+                        <h3>0预付，无风险</h3>
+                        <h4>入职付一半，转正付一半</h4>
+                        <p>普通猎头是三个月的薪水。非一般的我们只
+                            收一个月的薪水。如果试用期不通过，免费
+                            推荐另一个</p>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-2">
+                        <img class="img_mx_wid" src="../images/findjob2.png">
                     </div>
                 </div>
             </div>
 
-            <!--在招职位轮播-->
-            <company-carousel vertical='true'></company-carousel>
-            <!---->
-        </div>
-
-
-        <div class="block_wrap row text-center">
-
-            <div class="wrap_small_pd row ">
-                <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-2">
-                    <img class="img_mx_wid" src="../images/findjob1.png">
-                </div>
-
-                <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-1 text_big_align">
-                    <h3>0预付，无风险</h3>
-                    <h4>入职付一半，转正付一半</h4>
-                    <p>普通猎头是三个月的薪水。非一般的我们只
-                        收一个月的薪水。如果试用期不通过，免费
-                        推荐另一个</p>
-                </div>
+            <div class="row">
+                <img class="img-responsive" src="../images/findjob-bottombanner.png">
             </div>
 
 
-            <div class="wrap_small_pd row flex_small">
-
-                <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-1 text_big_align">
-                    <h3>0预付，无风险</h3>
-                    <h4>入职付一半，转正付一半</h4>
-                    <p>普通猎头是三个月的薪水。非一般的我们只
-                        收一个月的薪水。如果试用期不通过，免费
-                        推荐另一个</p>
-                </div>
-                <div class="col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-2">
-                    <img class="img_mx_wid" src="../images/findjob2.png">
-                </div>
-            </div>
         </div>
-
-        <div class="row">
-            <img class="img-responsive" src="../images/findjob-bottombanner.png">
-        </div>
-
 
     </div>
-
     </div>
-
 
 </main>
 

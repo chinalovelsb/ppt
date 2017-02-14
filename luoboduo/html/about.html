@@ -3,15 +3,16 @@
         <div class="row">
             <div class="col-md-3">
                 <ul class="col-md-11 nav_left text-center wrap_small_pd">
-                    <li ng-click="vm.change(true)" ng-class="{'about-active':vm.card}"><span class="aboutus"></span>关于我们
+                    <li ng-click="vm.change('about')" ng-class="{'about-active':vm.card=='about'}"><span
+                            class="aboutus"></span>关于我们
                     </li>
-                    <li ng-click="vm.change(false)" ng-class="{'about-active':!vm.card}">
+                    <li ng-click="vm.change('contact')" ng-class="{'about-active':vm.card=='contact'}">
                         <sapn class="contactus"></sapn>
                         联系我们
                     </li>
                 </ul>
             </div>
-            <div class="col-md-9 rest_pd about_content" ng-show="vm.card">
+            <div class="col-md-9 rest_pd about_content" ng-show="vm.card=='about'">
                 <h4>什么是萝卜多</h4>
                 <p>
                     萝卜多是针对创业公司及独立人才寻找伙伴合作，提供多对多服务，以按需推荐的方式帮助创业团队及人才解决盲目寻找、
@@ -27,7 +28,7 @@
                     地帮助创业家和他们的企业突破自我、 不断创新，共创事业，共享成功！
                 </p>
             </div>
-            <div class="col-md-9 rest_pd about_content cpy" ng-show="!vm.card">
+            <div class="col-md-9 rest_pd about_content cpy" ng-show="vm.card=='contact'">
                 <div class=row>
                     <p class="cpy-name col-md-12">北京葡萄腾信息技术有限公司</p>
                     <p class="col-md-6"> 电话： (010)59478634</p>

@@ -1,9 +1,7 @@
 <h4>在招职位{{vm.total}}个</h4>
-
-
 <div class=" col-md-12 ">
     <div class="row profession_card" ng-repeat="profession in vm.professionList"
-         ui-sref="professionDetail({id:profession.id})">
+         ui-sref="job.companyDetail({id:profession.id})">
         <div class="demand col-md-8">
             <b>{{profession.name}}[{{profession|city}}]</b>
             <span ng-bind="profession|compensation"></span>

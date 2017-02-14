@@ -17,7 +17,7 @@
     </style>
 </head>
 <body ng-app="app">
-<header class="position_self" ng-controller="BarController">
+<header class="position_self">
     <nav class="container" role="navigation">
         <div class="row">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -38,18 +38,17 @@
             </div>
             <div class="nav-small collapse navbar-collapse pull-right " id="example-navbar-collapse">
                 <ul class="nav navbar-nav ">
-                    <li></li>
-                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/home')]"><a
+                    <li class="par hv" ng-class="{'ac':currentState.includes('home')}"><a
                             style="padding-left: 0;padding-right: 0" ui-sref="home"
                             ng-click="url('/home')">首页</a><span></span></li>
-                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/job')]"><a
+                    <li class="par hv" ng-class="{'ac':currentState.includes('job')}"><a
                             style="padding-left: 0;padding-right: 0" ui-sref="job"
                             ng-click="url('/job')">找职位</a><span></span></li>
-                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/elite')]"><a
+                    <li class="par hv" ng-class="{'ac':currentState.includes('elite')}"><a
                             style="padding-left: 0;padding-right: 0" ui-sref="elite"
                             ng-click="url('/elite')">找精英</a><span></span></li>
-                    <li class="par" ng-class="{true:'ac',false:'hv'}[(Url|urlTest:'/about')]"><a
-                            style="padding-left: 0;padding-right: 0" ui-sref="about"
+                    <li class="par hv" ng-class="{'ac':currentState.includes('about')}"><a
+                            style="padding-left: 0;padding-right: 0" ui-sref="about({tag:'about'})"
                             ng-click="url('/about')">关于我们</a><span></span></li>
                 </ul>
             </div>
@@ -61,12 +60,12 @@
 <footer>
     <div class="row wrap_small">
         <div class="col-md-5 col-xs-6">
-            <p>关于我们</p>
+            <p><a ui-sref="about({tag:'about'})" ui-sref-opts="{reload: true}">关于我们</a></p>
             <p>萝卜多--知根知底的社群招聘</p>
         </div>
         <div class="col-md-4 col-xs-6">
             <ul class="contact">
-                <li><p>联系我们</p></li>
+                <li><a p ui-sref="about({tag:'contact'})" ui-sref-opts="{reload: true}">联系我们</a></li>
                 <li><img src="../images/i-phone.jpg">联系电话：（010）59478634</li>
                 <li><img src="../images/i-email.jpg">邮箱支持：fuhua@ptteng.com</li>
                 <li><img src="../images/i-address.png">地　　址：北京市海淀区翠微路甲10#225室</li>
@@ -91,9 +90,11 @@
 <script src="//cdn.bootcss.com/angular.js/1.5.8/angular-animate.js"></script>
 <script src="//cdn.bootcss.com/angular.js/1.5.8/angular-sanitize.js"></script>
 <script src="//cdn.bootcss.com/angular-ui-bootstrap/2.4.0/ui-bootstrap-tpls.js"></script>
-<script src="http://cdn.bootcss.com/angular-ui-router/1.0.0-beta.3/angular-ui-router.min.js"></script>
-<script src="//cdn.bootcss.com/oclazyload/1.0.9/ocLazyLoad.min.js"></script>
 <!--
+<script src="http://cdn.bootcss.com/angular-ui-router/1.0.0-beta.3/angular-ui-router.min.js"></script>
+-->
+<script src="//cdn.bootcss.com/oclazyload/1.0.9/ocLazyLoad.min.js"></script>
+<script src="//cdn.bootcss.com/angular-ui-router/0.4.2/angular-ui-router.js"></script><!--
 <script src="//cdn.bootcss.com/angular-ui-bootstrap/2.4.0/ui-bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/angular-ui-bootstrap/2.4.0/ui-bootstrap-tpls.min.js"></script>
 -->

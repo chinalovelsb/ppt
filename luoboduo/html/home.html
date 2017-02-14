@@ -1,20 +1,15 @@
 <main class="pd-zore">
     <div class="wrap" id="bannerFirst">
-
         <img class="img-responsive" ng-src="{{bannerUrl}}">
-
     </div>
 
     <div class="wrap">
-
-
         <div class="container">
             <div class="row wrap_small">
                 <div class="col-md-3 exhibition text-center ">
                     <div class="exhibition_icon">
                         <img src="../images/jianjie-1.png">
                     </div>
-
                     <p><b>超短响应时间</b></p>
                     <p>48小时高效推荐</p>
                 </div>
@@ -42,7 +37,6 @@
                     <span>98%</span>
                     <p>成功率</p>
                 </div>
-
             </div>
         </div>
     </div>
@@ -58,13 +52,12 @@
             </div>
             <div class="title_content">
                 <div class="text-right">
-                    <a class="more" ui-sref="search.searchjob">更多></a>
+                    <a class="more" ui-sref="job.search.searchjob">更多></a>
                     <profession-carousel></profession-carousel>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="wrap">
         <div class="container">
@@ -86,14 +79,14 @@
 
                     <div class="service_flow col-md-2 col-xs-12 col-md-offset-2">
                         <img src="../images/flow-2.png">
-                        <p>1.意向洽谈，深入评审</p>
+                        <p>2.确认合作，签订合同</p>
                     </div>
                     <div class=" service_flow_line">
 
                     </div>
                     <div class="service_flow col-md-2 col-xs-12 col-md-offset-2">
                         <img src="../images/flow-3.png">
-                        <p>1.意向洽谈，深入评审</p>
+                        <p>3.提出需求，提供jd</p>
                     </div>
                 </div>
                 <div class="service row">
@@ -103,19 +96,19 @@
                     </div>
                     <div class="service_flow col-md-2 col-xs-12 col-md-offset-1">
                         <img src="../images/flow-4.png">
-                        <p>1.意向洽谈，深入评审</p>
+                        <p>4.开始招聘，人才精选</p>
                     </div>
                     <div class=" service_flow_line">
 
                     </div>
                     <div class="service_flow col-md-2 col-xs-12 col-md-offset-2">
                         <img src="../images/flow-5.png">
-                        <p>1.意向洽谈，深入评审</p>
+                        <p>5.人才评测，简历脱水</p>
                     </div>
 
                     <div class="service_flow col-md-2 col-xs-12 col-md-offset-2 ">
                         <img src="../images/flow-6.png">
-                        <p>1.意向洽谈，深入评审</p>
+                        <p>6.上岗，转入售后</p>
                     </div>
                 </div>
             </div>
@@ -129,9 +122,11 @@
                     <span class="underline"></span></h4>
                 <p>NEW POSITION</p>
             </div>
-            <ul class="company_carousel row">
-                <profession-carousel interval=6000 params="{recommend: 1, size: 8}"></profession-carousel>
-            </ul>
+            <div class="partner-carousel">
+                <partner-carousel></partner-carousel>
+            </div>
+
+
         </div>
     </div>
     </div>

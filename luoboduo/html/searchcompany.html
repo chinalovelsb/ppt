@@ -1,8 +1,6 @@
-<img style="max-width: 100%;margin-bottom:20px" src="../images/companyList-img.png"
-     ng-if="vm.Url=='/job/search/companyList'">
 <div class="block_wrap col-md-12">
     <form class="form-horizontal search_tab col-md-12">
-        <div class="form-group form-inline " ng-if="vm.Url!=='/job/search/companyList'">
+        <div class="form-group form-inline " ng-if="!currentState.is('elite.conpanyList')">
             <label>关 键 词 ：</label>
             <input type="text" class="form-control keyword" ng-model="vm.company.name">
             <span class="keyword_show">当前关键词：{{vm.company.name}}</span>
@@ -18,28 +16,31 @@
     </form>
 </div>
 <div class="block_wrap col-md-12 search_company_result bd">
-    <div class=" col-md-4 company" ng-repeat="item in vm.items" ui-sref="companyDetail({id:item.id})"
+    <div class=" col-md-4 company" ng-repeat="item in vm.items"
          ng-if="vm.totalItems">
-        <div class="company_item block_wrap pull-right pd_clear">
-            <div class="format_flex ">
-                <div class="col-lg-4 col-md-5 col-xs-4  rest_pd">
-                    <div class="company_carousel_logo ">
-                        <img ng-src="{{item.logo}}">
+        <div class="company_item  pull-right pd_clear" ui-sref="job.companyDetail({id:item.id})">
+            <div>
+                <div class="format_flex ">
+                    <div class="col-lg-4 col-md-5 col-xs-4  rest_pd">
+                        <div class="company_carousel_logo ">
+                            <img ng-src="{{item.logo}}">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-8 col-md-7 col-xs-8 rest_pd">
-                    <div class="item_child_pd  rest_pd_r">
-                        <div class="format_flex_text  ">
-                            <p class="text_pre"><b>{{item.name}}</b></p>
-                            <p class="text_pre" title="{{item.slogan}}">{{item.slogan}}</p>
-                            <div>
-                                <span style="color:red">{{item.professionNum}}</span><span>个在招职位</span>
+                    <div class="col-lg-8 col-md-7 col-xs-8 rest_pd">
+                        <div class="item_child_pd  rest_pd_r">
+                            <div class="format_flex_text  ">
+                                <p class="text_pre"><b>{{item.name}}</b></p>
+                                <p class="text_pre" title="{{item.slogan}}">{{item.slogan}}</p>
+                                <div>
+                                    <span style="color:red">{{item.professionNum}}</span><span>个在招职位</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
+
             <div class="company_info">
                 <span class="text_pre" title="{{(item.industryList|industry).join()}}"><span
                         ng-repeat="x in item.industryList|industry">{{x}}<span
@@ -65,7 +66,8 @@
             <hr>
             <b style="font-size: 16px">推荐公司</b>
             <div class="row">
-                <div class=" col-md-4 company " ng-repeat="item in vm.reItems" ui-sref="companyDetail({id:item.id})">
+                <div class=" col-md-4 company " ng-repeat="item in vm.reItems"
+                     ui-sref="job.companyDetail({id:item.id})">
                     <div class="company_item block_wrap pull-right pd_clear">
                         <div class="format_flex ">
                             <div class="col-lg-4 col-md-5 col-xs-4  rest_pd">

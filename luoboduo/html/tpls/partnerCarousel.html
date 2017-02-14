@@ -1,0 +1,30 @@
+<div id="partner" class="carousel slide" data-ride="carousel" data-shift="1">
+    <div class="carousel-inner">
+        <ul class="row item active">
+            <li class="col-xs-3 " ng-repeat="item in jsonData|limitTo:4">
+                <div class="carousel_item">
+                    <div class="item_logo">
+                        <img class="img-circle" ng-src="{{item.logo}}" style="margin:auto;">
+                    </div>
+                    <p><b>{{item.name}}</b><span></span></p>
+                    <p>{{item.contant}}</p>
+                </div>
+            </li>
+        </ul>
+        <ul class="row item">
+            <li class="col-xs-3 " ng-repeat="item in jsonData|limitTo:-2">
+                <div class="carousel_item">
+                    <div class="item_logo">
+                        <img ng-src="{{item.logo}}" class="img-circle" style="margin:auto;">
+                    </div>
+                    <p><b>{{item.name}}</b><span></span></p>
+                    <p>{{item.contant}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <a class="carousel-control left" href="#partner" data-slide="prev"></a>
+    <a class="carousel-control right" href="#partner" data-slide="next"></a>
+</div>
+		  

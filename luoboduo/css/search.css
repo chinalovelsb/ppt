@@ -4,6 +4,7 @@ html {
 body {
   font-family: "Microsoft YaHei UI";
   font-size: 0.14rem;
+  color: #2b3d51;
 }
 a {
   color: #2b3d51;
@@ -60,6 +61,9 @@ footer .contact {
   margin-left: -30px;
   padding-left: 0;
   margin: 0 auto;
+}
+footer a {
+  color: #999;
 }
 .icon-bar {
   background-color: #eb5255;
@@ -161,6 +165,9 @@ main {
 .pd_t {
   padding-top: 20px;
 }
+.mr_tm_20 {
+  margin: 20px 0;
+}
 .bold {
   font-weight: 700;
   color: #2d3e50;
@@ -202,6 +209,9 @@ main {
 .par {
   margin-left: 15px;
   margin-right: 15px;
+}
+.par > a {
+  font-size: 0.16rem;
 }
 .hv:hover span {
   width: 100%;
@@ -322,7 +332,6 @@ a:hover {
   height: 100%;
 }
 .nav_wrap {
-  min-height: 456px;
   margin-bottom: 20px;
 }
 .nav_job_item:nth-child(3) span {
@@ -465,6 +474,9 @@ a:hover {
   display: flex;
   cursor: pointer;
 }
+.new_job_item > .job_item_icon {
+  border-radius: 0;
+}
 .new_job_item > img {
   width: 108px;
   height: 108px;
@@ -480,6 +492,12 @@ a:hover {
 .job_msg > p:first-child {
   font-size: .16rem;
   color: red;
+}
+.job_msg > p:nth-child(2) {
+  color: #2b3d51;
+}
+.job_msg > p:last-child {
+  color: #536a82;
 }
 .job_msg p {
   text-overflow: ellipsis;
@@ -536,6 +554,7 @@ a:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;
+  flex-shrink: 0;
 }
 .company_carousel_logo img {
   height: 100%;
@@ -558,6 +577,7 @@ a:hover {
   border-radius: 5px;
   padding: 5px 0;
   margin-bottom: 20px;
+  display: flex;
 }
 .job_list {
   width: 100%;
@@ -591,7 +611,6 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 60px;
   padding-right: 30px;
 }
 .job_company .job_company_name {
@@ -622,6 +641,7 @@ a:hover {
   padding-bottom: 10px;
 }
 .company_carousel_job .company_carousel_list {
+  display: flex;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -631,10 +651,8 @@ a:hover {
   border: none;
   padding-left: 0;
 }
-.company_carousel_job span:last-child {
-  width: 160px;
-}
 .company_carousel_job span {
+  flex-shrink: 0;
   border-left: 1px solid #e8e8e8;
   display: inline-block;
   margin-right: 15px;
@@ -644,9 +662,13 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.company_carousel_job span:last-child {
+  flex-shrink: 1;
+  width: 160px;
+}
 .company_msg {
   border-right: 1px solid #d8d8d8;
-  height: 100%;
+  height: 130px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -665,6 +687,10 @@ a:hover {
   overflow: hidden;
   width: 100%;
 }
+.company_msg .company_carousel_info .tag_wrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .company_msg .company_carousel_info .text_pre {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -682,6 +708,10 @@ a:hover {
   font-size: .12rem;
   padding: 2px 10px;
   display: inline-block;
+  flex-shrink: 0;
+}
+.tag:last-child {
+  flex-shrink: 1;
 }
 .pagination {
   margin: 0 auto;
@@ -892,12 +922,23 @@ a:hover {
   background-image: none;
   background-color: #fff;
 }
+@media (max-width: 768px) {
+  .job_list {
+    flex-direction: column;
+  }
+  .job_company {
+    padding-left: 30px;
+  }
+}
 @media (min-width: 768px) {
   .nofound {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 320px;
+  }
+  .modal-body {
+    padding: 25px 70px;
   }
 }
 @media (max-width: 768px) {
@@ -1016,7 +1057,11 @@ a:hover {
 .detail_company_title .logo {
   width: 200px;
   height: 200px;
+  padding: 5px;
   border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .detail_company_title .logo img {
   width: 100%;
@@ -1026,11 +1071,12 @@ a:hover {
   flex-direction: column;
   overflow: hidden;
   justify-content: space-between;
-  height: 90px;
+  min-height: 90px;
   padding-left: 30px;
 }
 .detail_company_title .detail_company_content p:first-child {
-  font-size: 0.16rem;
+  font-size: .16rem;
+  line-height: 25px;
 }
 .detail_company_title .detail_company_content .verify {
   background-color: #eb5255;
@@ -1041,6 +1087,13 @@ a:hover {
 }
 .page_tag {
   border-bottom: 1px solid #ccc;
+  margin-left: -15px;
+  margin-right: 5px;
+}
+.page_tag .active {
+  text-decoration: none;
+  border-bottom: 3px solid #eb5255;
+  color: #eb5255;
 }
 .page_tag a {
   border-bottom: 3px solid transparent;
@@ -1048,9 +1101,7 @@ a:hover {
   padding: 0 10px 10px;
   font-size: .16rem;
 }
-.page_tag a:hover,
-.page_tag a:active,
-.page_tag a:focus {
+.page_tag a:hover {
   text-decoration: none;
   border-bottom: 3px solid #eb5255;
   color: #eb5255;
@@ -1069,6 +1120,7 @@ a:hover {
   width: 150px;
   height: 150px;
   border: 1px solid #ccc;
+  flex-shrink: 0;
 }
 .detail_company_info span {
   color: #536a82;
@@ -1111,6 +1163,11 @@ a:hover {
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
+}
+.detail_company_info .profession_card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 7px #DAE0E3;
+  border: solid 1px #f5f5f5;
 }
 .detail_company_info .profession_card .updateTime {
   color: #999;
@@ -1177,6 +1234,18 @@ a:hover {
   box-shadow: 0 0 7px #DAE0E3;
   border: solid 1px #f5f5f5;
 }
+.modal-header {
+  background-color: #eb5255;
+  border-radius: 6px 6px 0 0;
+  color: #fff;
+}
+.modal-body {
+  color: #333;
+  text-align: justify;
+}
+.modal-body p:first-child {
+  font-size: 0.16rem;
+}
 .bd-right {
   border-right: 1px solid #e8e8e8;
 }
@@ -1187,9 +1256,14 @@ a:hover {
   height: 132px;
   margin: 93px 0;
 }
+.exhibition p {
+  font-size: 0.16rem;
+  color: #2b3d51;
+}
 .exhibition > p:last-child {
   text-align: center;
   font-size: 0.14rem;
+  color: #536a82;
 }
 .exhibition_icon {
   height: 50%;
@@ -1202,9 +1276,11 @@ a:hover {
 }
 .exhibition_data span {
   color: red;
+  font-weight: 700;
 }
 .exhibition_data p {
   margin-bottom: 20px;
+  color: #2b3d51;
 }
 .service {
   position: relative;
@@ -1326,6 +1402,94 @@ a:hover {
   background-image: none;
   background-color: #fff;
 }
+.partner-carousel .carousel[data-shift="1"] .carousel-inner > .item {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.partner-carousel > .carousel-inner {
+  height: 336px;
+}
+.partner-carousel > .carousel .carousel-inner > .item.row {
+  margin: 0;
+  height: 336px;
+}
+.partner-carousel .carousel .carousel-control {
+  background: none;
+  color: transparent;
+  overflow: hidden;
+  text-shadow: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width: 30px;
+}
+.partner-carousel .carousel .carousel-control:before {
+  color: #eb5255;
+  font-family: 'Glyphicons Halflings';
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 30px;
+  left: 0;
+  font-size: .16rem;
+}
+.partner-carousel .carousel .carousel-control:after {
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  content: '';
+  height: 60%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+.partner-carousel .carousel .carousel-control:hover:after {
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.7);
+}
+.partner-carousel .carousel .carousel-control.left {
+  left: -60px;
+}
+.partner-carousel .carousel .carousel-control.left:before {
+  content: '\e079';
+}
+.partner-carousel .carousel .carousel-control.left:after {
+  right: -100%;
+}
+.partner-carousel .carousel .carousel-control.right {
+  right: -60px;
+}
+.partner-carousel .carousel .carousel-control.right:before {
+  content: '\e080';
+}
+.partner-carousel .carousel .carousel-control.right:after {
+  left: -100%;
+}
+.partner-carousel .carousel_item {
+  padding: 18px;
+  height: 336px;
+}
+.partner-carousel .carousel_item p {
+  font-size: 0.16rem;
+}
+.partner-carousel .carousel_item > p:last-child {
+  text-align: justify;
+  font-size: .14rem;
+}
+.partner-carousel .carousel_item .item_logo {
+  margin: 14px auto;
+}
+.partner-carousel .carousel_item img {
+  width: 99px;
+  height: 99px;
+  border: 1px solid #ececec;
+}
+.carousel-control:focus,
+.carousel-control:hover {
+  color: #eb5255;
+}
 .nav_bar {
   border-bottom: 1px solid #eb5255;
 }
@@ -1391,7 +1555,7 @@ a:hover {
   overflow: hidden;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 20px;
+  cursor: pointer;
 }
 .search_company_result .company_item .item_child_pd,
 .search_company_result .job_item .item_child_pd {
@@ -1400,6 +1564,7 @@ a:hover {
 }
 .search_company_result .job_item {
   padding: 10px 30px;
+  margin-bottom: 20px;
 }
 .search_company_result .company_carousel_logo {
   height: 100px;
@@ -1419,7 +1584,7 @@ a:hover {
 .search_company_result .company {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  margin-bottom: 20px;
 }
 .search_company_result .company .company_carousel_logo {
   max-height: 115px;

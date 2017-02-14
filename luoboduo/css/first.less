@@ -1,6 +1,7 @@
 @c-hover: #eb5255;
 @c-f: #999;
 @c-bd: #f6f7f8;
+@import "base";
 @c-border: #e6eaec;
 .bd-right {
   border-right: 1px solid #e8e8e8
@@ -13,9 +14,14 @@
 .exhibition {
   height: 132px;
   margin: 93px 0;
+  p {
+    font-size: 0.16rem;
+    color: @font-2
+  }
   & > p:last-child {
     text-align: center;
     font-size: 0.14rem;
+    color: @font-last;
   }
 }
 
@@ -29,11 +35,13 @@
   margin: 70px 0;
   text-align: center;
   span {
-    color: red
+    color: red;
+    font-weight: 700;
   }
 ;
   p {
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    color: @font-2
   }
 }
 
@@ -174,4 +182,103 @@ a:hover {
     background-image: none;
     background-color: #fff
   }
+}
+
+.partner-carousel {
+  .carousel[data-shift="1"] .carousel-inner > .item {
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+  }
+  > .carousel-inner {
+    height: 336px
+  }
+  > .carousel .carousel-inner > .item.row {
+    margin: 0;
+    height: 336px
+  }
+
+  .carousel .carousel-control {
+    background: none;
+    color: transparent;
+    overflow: hidden;
+    text-shadow: none;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    width: 30px;
+  }
+
+  .carousel .carousel-control:before {
+    color: @c-hover;
+    font-family: 'Glyphicons Halflings';
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 30px;
+    left: 0;
+    font-size: .16rem;
+  }
+  .carousel .carousel-control:after {
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    content: '';
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    width: 100%;
+  }
+  .carousel .carousel-control:hover:after {
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.7);
+  }
+  .carousel .carousel-control.left {
+    left: -60px;
+  }
+
+  .carousel .carousel-control.left:before {
+    content: '\e079';
+  }
+
+  .carousel .carousel-control.left:after {
+    right: -100%;
+  }
+
+  .carousel .carousel-control.right {
+    right: -60px;
+  }
+
+  .carousel .carousel-control.right:before {
+    content: '\e080';
+  }
+
+  .carousel .carousel-control.right:after {
+    left: -100%;
+  }
+
+  .carousel_item {
+    padding: 18px;
+    height: 336px;
+    p {
+      font-size: .16rem
+    }
+    > p:last-child {
+      text-align: justify;
+      font-size: .14rem;
+    }
+    .item_logo {
+      margin: 14px auto
+    }
+    img {
+      width: 99px;
+      height: 99px;
+      border: 1px solid #ececec;
+    }
+  }
+}
+
+.carousel-control:focus, .carousel-control:hover {
+  color: @c-hover
 }

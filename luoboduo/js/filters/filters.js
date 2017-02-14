@@ -73,7 +73,7 @@ angular.module('app')
     .filter('experience', function (experience) {
         var value;
         return function (obj) {
-            angular.forEach(experience, function (item) {
+            angular.forEach(experience, function (item, idx) {
                 if (obj.experience == item.type) {
                     return value = item.name
                 }
@@ -81,6 +81,7 @@ angular.module('app')
             return value
         }
     })
+
     //学历
     .filter('education', function (education) {
         var value;

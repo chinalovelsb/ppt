@@ -2,25 +2,16 @@
  * Created by Master on 2017/1/6.
  */
 "use strict";
-//导航标记
-angular.module('app')
-    .controller('BarController', BarController);
-BarController.$inject = ['$scope', '$location'];
-function BarController($scope, $location) {
-    $scope.url = function (a) {
-        $scope.Url = a;
-    };
-    $scope.Url = $location.path();
-}
 //关于我们
 angular.module('app')
     .controller('AboutController', AboutController);
-AboutController.$inject = [];
-function AboutController() {
+AboutController.$inject = ['paramster'];
+function AboutController(paramster) {
     var vm = this;
-    vm.card = true;
+    vm.card = paramster.get('tag');
     vm.change = function (n) {
-        vm.card = n
+        vm.card = n;
+        paramster.set({'tag': n})
     }
 }
 //职位详情
@@ -44,28 +35,27 @@ angular.module('app')
 FirstController.$inject = ['$scope', '$http'];
 function FirstController($scope, $http) {
     //首页banner
-    $http.get('/lbd/a/article/search?type=0')
-        .success(function (response) {
-            $scope.bannerUrl = response.data.articleList[0].img
-        });
+    $http.get('/lbd/a/article/search?type=0').success(function (response) {
+        $scope.bannerUrl = response.data.articleList[0] ? response.data.articleList[0].img : '../images/homepage.png'
+    });
 }
 
 
 //找职位页
 angular.module('app')
     .controller('FindProfessionController', FindProfessionController);
-FindProfessionController.$inject = ['requestData'];
-function FindProfessionController(requestData) {
+FindProfessionController.$inject = ['requestData', '$rootScope'];
+function FindProfessionController(requestData, $rootScope) {
     var vm = this;
 
     vm.professionList = [];
-
 
     //切换标签
     vm.thisCard = true;
     vm.checked = function (a) {
         !a ? vm.thisCard = false : vm.thisCard = true;
         vm.changeCard(a);
+
     };
 
     //获取推荐职位、最新职位
@@ -75,8 +65,6 @@ function FindProfessionController(requestData) {
         })
     };
     vm.changeCard(1);
-
-
     //公司列表
     requestData.companyList({returnPage: 1}).success(function (res) {
         vm.companyList = res.approvedCompanyList;
@@ -95,7 +83,8 @@ function EliteController(requestData) {
     getBanner();
     function getBanner() {
         requestData.articleList({type: 2}).then(function (res) {
-            vm.banner = res.data.data.articleList[0].img
+            var imgList = res.data.data.articleList;
+            vm.banner = imgList.length ? res.data.data.articleList[0].img : '';
         })
     }
 
@@ -119,6 +108,7 @@ function CompanyDetailController($filter, requestData, $stateParams, $location) 
     //公司详情
     requestData.companyDetail(id).success(function (res) {
         vm.company = res.data.company;
+        vm.productList = res.data.productList[0];
         vm.industryList = $filter('industry')(res.data.industryList);
         vm.tag = res.data.tagList;
         vm.city = $filter('city')(vm.company)
@@ -137,16 +127,10 @@ function CompanyDetailController($filter, requestData, $stateParams, $location) 
 //搜索页标签
 angular.module('app')
     .controller('SearchController', SearchController);
-SearchCompanyController.$inject = ['$location'];
-function SearchController($location) {
+SearchCompanyController.$inject = ['paramster'];
+function SearchController(paramster) {
     var vm = this;
-
-    $location.path() === "/job/search/companyList" ? vm.Url = false : vm.Url = true;
-    $location.path() === "/job/search/searchcompany" ? vm.chosen = 'cpy' : vm.chosen = 'job';
-    vm.choose = change;
-    function change(type) {
-        vm.chosen = type;
-    }
+    vm.recommend = paramster.get('recommend')
 }
 
 //搜索职位
@@ -158,6 +142,7 @@ function SearchJobController(requestData, $stateParams, $location, clean, $state
     var vm = this;
     var params, startParams;
     startParams = $stateParams;
+    //是否返回标签
     startParams.returnTags = 1;
     startParams.recommend = $stateParams.recommend || $location.search().recommend;
 
@@ -178,7 +163,7 @@ function SearchJobController(requestData, $stateParams, $location, clean, $state
         startParams ? params = startParams : params = vm.profession;
         params ? paramster.set(params) : '';
         requestData.ProfessionList(params).success(function (response) {
-            response.total ? '' : $state.go('search.searchjob.nofound');
+
             vm.professionList = response.data;
             vm.totalItems = response.total;
             vm.totalItems ? '' : recommendProfession();

@@ -1,11 +1,11 @@
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 nav_bar pd-zore" ng-if="vm.Url">
-                <a ng-class="{'cpy':'active'}[vm.chosen]" ng-click="vm.choose('cpy')" ui-sref=".searchcompany">公司</a>
-                <a ng-class="{'job':'active'}[vm.chosen]" ng-click="vm.choose('job')" ui-sref=".searchjob">职业</a>
-            </div>
-            <ui-view></ui-view>
-        </div>
+<div class="row">
+    <div class="col-md-12 nav_bar pd-zore"
+         ng-if="(currentState.includes('job.search.searchcompany')||currentState.includes('job.search.searchjob'))&&!vm.recommend">
+        <a ng-class="{'active':currentState.includes('job.search.searchcompany')}" ng-click="vm.choose('cpy')"
+           ui-sref=".searchcompany">公司</a>
+        <a ng-class="{'active':currentState.includes('job.search.searchjob')}" ui-sref=".searchjob">职业</a>
     </div>
-</main>
+    <p ng-if="vm.recommend"><b style="font-size: .16rem">{{+vm.recommend?'推荐':'最新'}}职位</b></p>
+    <ui-view></ui-view>
+</div>
+

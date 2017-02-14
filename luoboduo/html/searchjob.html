@@ -27,25 +27,25 @@
 
 <div class="block_wrap col-xs-12 search_company_result">
     <div class="job_list col-md-12" ng-repeat="profession in vm.professionList"
-         ui-sref="professionDetail({id:profession.id})" ng-if="vm.totalItems">
-        <div class="col-md-6 rest_pd_lr company_msg job_name">
-            <p><b>{{profession.name}}</b><span>发布时间：{{profession.updateAt|timestamp}}</span></p>
+         ui-sref="job.professionDetail({id:profession.id})" ng-if="vm.totalItems">
+        <div class="col-xs-12 col-sm-6 rest_pd_lr company_msg job_name">
+            <p><b c>{{profession.name}}</b><span>发布时间：{{profession.updateAt|timestamp}}</span></p>
             <p class="">{{profession|compensation}}</p>
             <p>{{profession|city}}-{{profession|county}}/{{profession|education}}/{{profession|experience}}</p>
         </div>
-        <div class="col-md-6 job_company rest_pd_lr">
-            <div class="col-md-9 col-xs-9 pd-zore format_flex_text">
+        <div class="col-xs-9 col-sm-6 job_company ">
+            <div class="  col-sm-8 col-sm-offset-1 pd-zore col-xs-12 format_flex_text" style="flex-shrink: 0">
                 <div class="job_company_name  height_full">
                     <p><b>{{profession.companyName}}</b></p>
                     <div><span ng-repeat="industry in profession.industryList|industry">{{industry}}<span
                             ng-if="!$last">/</span></span></div>
                     <div class="text_pre text_wrap">
-                        <span class="tag" ng-repeat="tag in profession.tags">{{tag.tag}}</span>
+                        <span class="tag" ng-repeat="tag in profession.tags" ng-if="$index<=3">{{tag.tag}}</span>
                     </div>
                 </div>
             </div>
 
-            <img class="img-thumbnail pull-right" ng-src="{{profession.logo}}">
+            <img class="img-thumbnail pull-right " ng-src="{{profession.logo}}">
         </div>
     </div>
     <paging total-items="vm.totalItems" current-page="vm.profession.page" max-Size="5" items-per-page="10"
@@ -65,7 +65,7 @@
             <b style="font-size: 16px">推荐职位</b>
             <div class="row">
                 <div class="col-md-4 rest_pd" ng-repeat="item in vm.professionList"
-                     ui-sref='professionDetail({id:item.id})'>
+                     ui-sref='job.professionDetail({id:item.id})'>
                     <div class="new_job_item">
                         <img class="job_item_icon img-thumbnail" ng-src="{{item.logo}}">
                         <div class="job_msg">

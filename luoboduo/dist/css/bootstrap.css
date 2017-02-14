@@ -7168,11 +7168,11 @@ button.close {
 }
 
 .carousel-inner > .next {
-    left: 100%;
+    left: 25%;
 }
 
 .carousel-inner > .prev {
-    left: -100%;
+    left: -25%;
 }
 
 .carousel-inner > .next.left,
@@ -7181,11 +7181,11 @@ button.close {
 }
 
 .carousel-inner > .active.left {
-    left: -100%;
+    left: -25%;
 }
 
 .carousel-inner > .active.right {
-    left: 100%;
+    left: 25%;
 }
 
 .carousel-control {
