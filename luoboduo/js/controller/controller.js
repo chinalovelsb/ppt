@@ -84,7 +84,7 @@ function EliteController(requestData) {
     function getBanner() {
         requestData.articleList({type: 2}).then(function (res) {
             var imgList = res.data.data.articleList;
-            vm.banner = imgList.length ? res.data.data.articleList[0].img : '';
+            vm.banner = imgList.length ? res.data.data.articleList[0].img :console.warn('后台无数据');
         })
     }
 

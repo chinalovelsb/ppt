@@ -1,7 +1,7 @@
 <div id="partner" class="carousel slide" data-ride="carousel" data-shift="1">
     <div class="carousel-inner">
         <ul class="row item active">
-            <li class="col-xs-3 " ng-repeat="item in jsonData|limitTo:4">
+            <li class="col-md-3 col-sm-6 col-xs-12" ng-repeat="item in jsonData|limitTo:4">
                 <div class="carousel_item">
                     <div class="item_logo">
                         <img class="img-circle" ng-src="{{item.logo}}" style="margin:auto;">
@@ -12,7 +12,7 @@
             </li>
         </ul>
         <ul class="row item">
-            <li class="col-xs-3 " ng-repeat="item in jsonData|limitTo:-2">
+            <li class="col-md-3 col-sm-6 col-xs-12" ng-repeat="item in jsonData|limitTo:-2">
                 <div class="carousel_item">
                     <div class="item_logo">
                         <img ng-src="{{item.logo}}" class="img-circle" style="margin:auto;">
